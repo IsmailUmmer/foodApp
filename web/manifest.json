@@ -1,7 +1,4 @@
-{
-    "name": "donut",
-    "short_name": "donut",
-   class Solution {
+class Solution {
 public:
     string longestDiverseString(int a, int b, int c) {
         using pci = pair<char, int>;
@@ -37,16 +34,3 @@ public:
         return ans;
     }
 };
-            "src": "icons/Icon-maskable-192.png",
-            "sizes": "192x192",
-            "type": "image/png",
-            "purpose": "maskable"
-        },
-        {
-            "src": "icons/Icon-maskable-512.png",
-            "sizes": "512x512",
-            "type": "image/png",
-            "purpose": "maskable"
-        }
-    ]
-}

@@ -1,25 +1,42 @@
 {
     "name": "donut",
     "short_name": "donut",
-    "start_url": ".",
-    "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
-    "orientation": "portrait-primary",
-    "prefer_related_applications": false,
-    "icons": [
-        {
-            "src": "icons/Icon-192.png",
-            "sizes": "192x192",
-            "type": "image/png"
-        },
-        {
-            "src": "icons/Icon-512.png",
-            "sizes": "512x512",
-            "type": "image/png"
-        },
-        {
+   class Solution {
+public:
+    string longestDiverseString(int a, int b, int c) {
+        using pci = pair<char, int>;
+        auto cmp = [](pci x, pci y) { return x.second < y.second; };
+        priority_queue<pci, vector<pci>, decltype(cmp)> pq(cmp);
+
+        if (a > 0) pq.push({'a', a});
+        if (b > 0) pq.push({'b', b});
+        if (c > 0) pq.push({'c', c});
+
+        string ans;
+        while (!pq.empty()) {
+            pci cur = pq.top();
+            pq.pop();
+            int n = ans.size();
+            if (n >= 2 && ans[n - 1] == cur.first && ans[n - 2] == cur.first) {
+                if (pq.empty()) break;
+                pci nxt = pq.top();
+                pq.pop();
+                ans.push_back(nxt.first);
+                if (--nxt.second > 0) {
+                    pq.push(nxt);
+                }
+                pq.push(cur);
+            } else {
+                ans.push_back(cur.first);
+                if (--cur.second > 0) {
+                    pq.push(cur);
+                }
+            }
+        }
+
+        return ans;
+    }
+};
             "src": "icons/Icon-maskable-192.png",
             "sizes": "192x192",
             "type": "image/png",

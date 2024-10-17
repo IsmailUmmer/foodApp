@@ -41,34 +41,78 @@ public:
         // Wait for registration to finish before dropping the <script> tag.
         // Otherwise, the browser will load the script multiple times,
         // potentially different versions.
-        var serviceWorkerUrl = 'flutter_service_worker.js?v=' + serviceWorkerVersion;
-        navigator.serviceWorker.register(serviceWorkerUrl)
-          .then((reg) => {
-            function waitForActivation(serviceWorker) {
-              serviceWorker.addEventListener('statechange', () => {
-                if (serviceWorker.state == 'activated') {
-                  console.log('Installed new service worker.');
-                  loadMainDartJs();
-                }
-              });
-            }
-            if (!reg.active && (reg.installing || reg.waiting)) {
-              // No active web worker and we have installed or are installing
-              // one for the first time. Simply wait for it to activate.
-              waitForActivation(reg.installing || reg.waiting);
-            } else if (!reg.active.scriptURL.endsWith(serviceWorkerVersion)) {
-              // When the app updates the serviceWorkerVersion changes, so we
-              // need to ask the service worker to update.
-              console.log('New service worker available.');
-              reg.update();
-              waitForActivation(reg.installing);
-            } else {
-              // Existing service worker is still good.
-              console.log('Loading app from service worker.');
-              loadMainDartJs();
-            }
-          });
+      #include <vector>
+#include <set>
+#include <unordered_map>
 
+class LargestXSumFinder {
+public:
+    std::vector<int> find_largest_x_sum(std::vector<int>& numbers, int window_size, int x) {
+        using value_count_pair = std::pair<int, int>;
+        std::set<value_count_pair> smallest_x, remaining;
+        int sum = 0;
+        std::unordered_map<int, int> frequency;
+
+        auto add_value = [&](int value) {
+            if (frequency[value] == 0) {
+                return;
+            }
+            value_count_pair pair = {frequency[value], value};
+            if (!smallest_x.empty() && pair > *smallest_x.begin()) {
+                sum += pair.first * pair.second;
+                smallest_x.insert(pair);
+            } else {
+                remaining.insert(pair);
+            }
+        };
+
+        auto remove_value = [&](int value) {
+            if (frequency[value] == 0) {
+                return;
+            }
+            value_count_pair pair = {frequency[value], value};
+            auto it = smallest_x.find(pair);
+            if (it != smallest_x.end()) {
+                sum -= pair.first * pair.second;
+                smallest_x.erase(it);
+            } else {
+                remaining.erase(pair);
+            }
+        };
+
+        std::vector<int> results;
+        for (int i = 0; i < numbers.size(); ++i) {
+            remove_value(numbers[i]);
+            ++frequency[numbers[i]];
+            add_value(numbers[i]);
+
+            int start_index = i - window_size + 1;
+            if (start_index < 0) {
+                continue;
+            }
+
+            // Corrected condition
+            while (!remaining.empty() && smallest_x.size() < x) {
+                value_count_pair pair = *remaining.rbegin();
+                sum += pair.first * pair.second;
+                remaining.erase(pair);
+                smallest_x.insert(pair);
+            }
+            while (smallest_x.size() > x) {
+                value_count_pair pair = *smallest_x.begin();
+                sum -= pair.first * pair.second;
+                smallest_x.erase(pair);
+                remaining.insert(pair);
+            }
+            results.push_back(sum);
+
+            remove_value(numbers[start_index]);
+            --frequency[numbers[start_index]];
+            add_value(numbers[start_index]);
+        }
+        return results;
+    }
+};
         // If service worker doesn't succeed in a reasonable amount of time,
         // fallback to plaint <script> tag.
         setTimeout(() => {

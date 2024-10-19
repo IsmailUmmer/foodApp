@@ -45,26 +45,25 @@ public:
 #include <set>
 #include <unordered_map>
 
-class LargestXSumFinder {
+class Solution {
 public:
-    std::vector<int> find_largest_x_sum(std::vector<int>& numbers, int window_size, int x) {
-        using value_count_pair = std::pair<int, int>;
-        std::set<value_count_pair> smallest_x, remaining;
-        int sum = 0;
-        std::unordered_map<int, int> frequency;
-
-        auto add_value = [&](int value) {
-            if (frequency[value] == 0) {
-                return;
+    char findKthBit(int n, int k) {
+        function<int(int, int)> dfs = [&](int n, int k) {
+            if (k == 1) {
+                return 0;
             }
-            value_count_pair pair = {frequency[value], value};
-            if (!smallest_x.empty() && pair > *smallest_x.begin()) {
-                sum += pair.first * pair.second;
-                smallest_x.insert(pair);
-            } else {
-                remaining.insert(pair);
+            if ((k & (k - 1)) == 0) {
+                return 1;
             }
+            int m = 1 << n;
+            if (k * 2 < m - 1) {
+                return dfs(n - 1, k);
+            }
+            return dfs(n - 1, m - k) ^ 1;
         };
+        return '0' + dfs(n, k);
+    }
+};
 
         auto remove_value = [&](int value) {
             if (frequency[value] == 0) {

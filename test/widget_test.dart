@@ -5,41 +5,26 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
-import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
 class Solution {
 public:
-class Solution {
-public:
-    unordered_set<string> vis;
-    string s;
-    int ans = 1;
-
-    int maxUniqueSplit(string s) {
-        this->s = s;
-        dfs(0, 0);
-        return ans;
+    bool flipEquiv(TreeNode* root1, TreeNode* root2) {
+        return dfs(root1, root2);
     }
 
-    void dfs(int i, int t) {
-        if (i >= s.size()) {
-            ans = max(ans, t);
-            return;
-        }
-        for (int j = i + 1; j <= s.size(); ++j) {
-            string x = s.substr(i, j - i);
-            if (!vis.count(x)) {
-                vis.insert(x);
-                dfs(j, t + 1);
-                vis.erase(x);
-            }
-        }
+    bool dfs(TreeNode* root1, TreeNode* root2) {
+        if (root1 == root2 || (!root1 && !root2)) return true;
+        if (!root1 || !root2 || root1->val != root2->val) return false;
+        return (dfs(root1->left, root2->left) && dfs(root1->right, root2->right)) || (dfs(root1->left, root2->right) && dfs(root1->right, root2->left));
     }
 };
-        }
-        return ans;
-    }
-};sNothing);
-    expect(find.text('1'), findsOneWidget);
-  });
-}

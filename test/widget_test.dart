@@ -1,28 +1,25 @@
+using ll = long long;
+
 class Solution {
 public:
-    int minimumMountainRemovals(vector<int>& nums) {
-        int n = nums.size();
-        vector<int> left(n, 1), right(n, 1);
-        for (int i = 1; i < n; ++i) {
-            for (int j = 0; j < i; ++j) {
-                if (nums[i] > nums[j]) {
-                    left[i] = max(left[i], left[j] + 1);
-                }
+    long long minimumTotalDistance(vector<int>& robot, vector<vector<int>>& factory) {
+        sort(robot.begin(), robot.end());
+        sort(factory.begin(), factory.end());
+        vector<vector<ll>> f(robot.size(), vector<ll>(factory.size()));
+        function<ll(int i, int j)> dfs = [&](int i, int j) -> ll {
+            if (i == robot.size()) return 0;
+            if (j == factory.size()) return 1e15;
+            if (f[i][j]) return f[i][j];
+            ll ans = dfs(i, j + 1);
+            ll t = 0;
+            for (int k = 0; k < factory[j][1]; ++k) {
+                if (i + k >= robot.size()) break;
+                t += abs(robot[i + k] - factory[j][0]);
+                ans = min(ans, t + dfs(i + k + 1, j + 1));
             }
-        }
-        for (int i = n - 2; i >= 0; --i) {
-            for (int j = i + 1; j < n; ++j) {
-                if (nums[i] > nums[j]) {
-                    right[i] = max(right[i], right[j] + 1);
-                }
-            }
-        }
-        int ans = 0;
-        for (int i = 0; i < n; ++i) {
-            if (left[i] > 1 && right[i] > 1) {
-                ans = max(ans, left[i] + right[i] - 1);
-            }
-        }
-        return n - ans;
+            f[i][j] = ans;
+            return ans;
+        };
+        return dfs(0, 0);
     }
 };

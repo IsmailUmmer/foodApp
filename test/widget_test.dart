@@ -1,13 +1,23 @@
 class Solution {
 public:
-    string makeFancyString(string s) {
-        string ans = "";
-        for (char& c : s) {
-            int n = ans.size();
-            if (n < 2 || ans[n - 1] != c || ans[n - 2] != c) {
-                ans += c;
+    bool isCircularSentence(string sentence) {
+        auto ss = split(sentence, ' ');
+        int n = ss.size();
+        for (int i = 0; i < n; ++i) {
+            if (ss[i].back() != ss[(i + 1) % n][0]) {
+                return false;
             }
         }
-        return ans;
+        return true;
+    }
+
+    vector<string> split(string& s, char delim) {
+        stringstream ss(s);
+        string item;
+        vector<string> res;
+        while (getline(ss, item, delim)) {
+            res.emplace_back(item);
+        }
+        return res;
     }
 };

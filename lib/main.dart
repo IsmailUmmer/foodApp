@@ -1,21 +1,16 @@
 class Solution {
 public:
-    char kthCharacter(long long k, vector<int>& operations) {
-        long long n = 1;
-        int i = 0;
-        while (n < k) {
-            n *= 2;
-            ++i;
-        }
-        int d = 0;
-        while (n > 1) {
-            if (k > n / 2) {
-                k -= n / 2;
-                d += operations[i - 1];
+    int largestCombination(vector<int>& candidates) {
+        int mx = *max_element(candidates.begin(), candidates.end());
+        int m = 32 - __builtin_clz(mx);
+        int ans = 0;
+        for (int i = 0; i < m; ++i) {
+            int cnt = 0;
+            for (int x : candidates) {
+                cnt += x >> i & 1;
             }
-            n /= 2;
-            --i;
+            ans = max(ans, cnt);
         }
-        return 'a' + (d % 26);
+        return ans;
     }
 };

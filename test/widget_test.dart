@@ -1,23 +1,15 @@
 class Solution {
 public:
-    vector<int> getMaximumXor(vector<int>& nums, int maximumBit) {
-        int xs = 0;
-        for (int& x : nums) {
-            xs ^= x;
-        }
-        int n = nums.size();
-        vector<int> ans(n);
-        for (int i = 0; i < n; ++i) {
-            int x = nums[n - i - 1];
-            int k = 0;
-            for (int j = maximumBit - 1; ~j; --j) {
-                if ((xs >> j & 1) == 0) {
-                    k |= 1 << j;
-                }
+    long long minEnd(int n, int x) {
+        --n;
+        long long ans = x;
+        for (int i = 0; i < 31; ++i) {
+            if (x >> i & 1 ^ 1) {
+                ans |= (n & 1) << i;
+                n >>= 1;
             }
-            ans[i] = k;
-            xs ^= x;
         }
+        ans |= (1LL * n) << 31;
         return ans;
     }
 };

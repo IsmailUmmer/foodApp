@@ -1,15 +1,13 @@
 class Solution {
 public:
-    long long minEnd(int n, int x) {
-        --n;
-        long long ans = x;
-        for (int i = 0; i < 31; ++i) {
-            if (x >> i & 1 ^ 1) {
-                ans |= (n & 1) << i;
-                n >>= 1;
-            }
+    long long countFairPairs(vector<int>& nums, int lower, int upper) {
+        long long ans = 0;
+        sort(nums.begin(), nums.end());
+        for (int i = 0; i < nums.size(); ++i) {
+            auto j = lower_bound(nums.begin() + i + 1, nums.end(), lower - nums[i]);
+            auto k = lower_bound(nums.begin() + i + 1, nums.end(), upper - nums[i] + 1);
+            ans += k - j;
         }
-        ans |= (1LL * n) << 31;
         return ans;
     }
 };

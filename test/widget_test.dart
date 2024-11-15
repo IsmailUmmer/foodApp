@@ -1,28 +1,22 @@
 class Solution {
 public:
-    int minimumMountainRemovals(vector<int>& nums) {
-        int n = nums.size();
-        vector<int> left(n, 1), right(n, 1);
-        for (int i = 1; i < n; ++i) {
-            for (int j = 0; j < i; ++j) {
-                if (nums[i] > nums[j]) {
-                    left[i] = max(left[i], left[j] + 1);
-                }
-            }
+    int findLengthOfShortestSubarray(vector<int>& arr) {
+        int n = arr.size();
+        int i = 0, j = n - 1;
+        while (i + 1 < n && arr[i] <= arr[i + 1]) {
+            ++i;
         }
-        for (int i = n - 2; i >= 0; --i) {
-            for (int j = i + 1; j < n; ++j) {
-                if (nums[i] > nums[j]) {
-                    right[i] = max(right[i], right[j] + 1);
-                }
-            }
+        while (j - 1 >= 0 && arr[j - 1] <= arr[j]) {
+            --j;
         }
-        int ans = 0;
-        for (int i = 0; i < n; ++i) {
-            if (left[i] > 1 && right[i] > 1) {
-                ans = max(ans, left[i] + right[i] - 1);
-            }
+        if (i >= j) {
+            return 0;
         }
-        return n - ans;
+        int ans = min(n - 1 - i, j);
+        for (int l = 0; l <= i; ++l) {
+            int r = lower_bound(arr.begin() + j, arr.end(), arr[l]) - arr.begin();
+            ans = min(ans, r - l - 1);
+        }
+        return ans;
     }
 };

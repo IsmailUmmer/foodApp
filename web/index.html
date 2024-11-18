@@ -21,29 +21,15 @@
   <meta name="description" content="A new Flutter project.">
 
   <!-- iOS meta tags & icons -->
- class Solution {
+class Solution {
 public:
-    bool parseBoolExpr(string expression) {
-        stack<char> stk;
-        for (char c : expression) {
-            if (c != '(' && c != ')' && c != ',')
-                stk.push(c);
-            else if (c == ')') {
-                int t = 0, f = 0;
-                while (stk.top() == 't' || stk.top() == 'f') {
-                    t += stk.top() == 't';
-                    f += stk.top() == 'f';
-                    stk.pop();
-                }
-                char op = stk.top();
-                stk.pop();
-                if (op == '!') c = f ? 't' : 'f';
-                if (op == '&') c = f ? 'f' : 't';
-                if (op == '|') c = t ? 't' : 'f';
-                stk.push(c);
-            }
+    int minChanges(string s) {
+        int ans = 0;
+        int n = s.size();
+        for (int i = 1; i < n; i += 2) {
+            ans += s[i] != s[i - 1];
         }
-        return stk.top() == 't';
+        return ans;
     }
 };
 ROG Plays streams 
@@ -72,28 +58,24 @@ ROG Plays streams
  */
 class Solution {
 public:
-    long long kthLargestLevelSum(TreeNode* root, int k) {
-        vector<long long> arr;
-        queue<TreeNode*> q{{root}};
-        while (!q.empty()) {
-            long long t = 0;
-            for (int n = q.size(); n; --n) {
-                root = q.front();
-                q.pop();
-                t += root->val;
-                if (root->left) {
-                    q.push(root->left);
-                }
-                if (root->right) {
-                    q.push(root->right);
-                }
+    vector<int> maximumBeauty(vector<vector<int>>& items, vector<int>& queries) {
+        sort(items.begin(), items.end());
+        int n = items.size();
+        int m = queries.size();
+        vector<int> idx(m);
+        iota(idx.begin(), idx.end(), 0);
+        sort(idx.begin(), idx.end(), [&](int i, int j) {
+            return queries[i] < queries[j];
+        });
+        int mx = 0, i = 0;
+        vector<int> ans(m);
+        for (int j : idx) {
+            while (i < n && items[i][0] <= queries[j]) {
+                mx = max(mx, items[i][1]);
+                ++i;
             }
-            arr.push_back(t);
+            ans[j] = mx;
         }
-        if (arr.size() < k) {
-            return -1;
-        }
-        sort(arr.rbegin(), arr.rend());
-        return arr[k - 1];
+        return ans;
     }
 };

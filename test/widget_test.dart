@@ -1,19 +1,22 @@
 class Solution {
 public:
-    int shortestSubarray(vector<int>& nums, int k) {
-        int n = nums.size();
-        vector<long> s(n + 1);
-        for (int i = 0; i < n; ++i) s[i + 1] = s[i] + nums[i];
-        deque<int> q;
-        int ans = n + 1;
-        for (int i = 0; i <= n; ++i) {
-            while (!q.empty() && s[i] - s[q.front()] >= k) {
-                ans = min(ans, i - q.front());
-                q.pop_front();
-            }
-            while (!q.empty() && s[q.back()] >= s[i]) q.pop_back();
-            q.push_back(i);
+    vector<int> decrypt(vector<int>& code, int k) {
+        int n = code.size();
+        vector<int> ans(n);
+        if (k == 0) {
+            return ans;
         }
-        return ans > n ? -1 : ans;
+        for (int i = 0; i < n; ++i) {
+            if (k > 0) {
+                for (int j = i + 1; j < i + k + 1; ++j) {
+                    ans[i] += code[j % n];
+                }
+            } else {
+                for (int j = i + k; j < i; ++j) {
+                    ans[i] += code[(j + n) % n];
+                }
+            }
+        }
+        return ans;
     }
 };

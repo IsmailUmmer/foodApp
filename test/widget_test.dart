@@ -1,25 +1,25 @@
 class Solution {
 public:
-    long long maximumSubarraySum(vector<int>& nums, int k) {
-        using ll = long long;
-        int n = nums.size();
-        unordered_map<int, ll> cnt;
-        ll s = 0;
-        for (int i = 0; i < k; ++i) {
-            ++cnt[nums[i]];
-            s += nums[i];
+    int takeCharacters(string s, int k) {
+        int cnt[3]{};
+        int n = s.length();
+        for (int i = 0; i < n; ++i) {
+            ++cnt[s[i] - 'a'];
         }
-        ll ans = cnt.size() == k ? s : 0;
-        for (int i = k; i < n; ++i) {
-            ++cnt[nums[i]];
-            if (--cnt[nums[i - k]] == 0) {
-                cnt.erase(nums[i - k]);
-            }
-            s += nums[i] - nums[i - k];
-            if (cnt.size() == k) {
-                ans = max(ans, s);
+        for (int x : cnt) {
+            if (x < k) {
+                return -1;
             }
         }
-        return ans;
+        int mx = 0, j = 0;
+        for (int i = 0; i < n; ++i) {
+            int c = s[i] - 'a';
+            --cnt[c];
+            while (cnt[c] < k) {
+                ++cnt[s[j++] - 'a'];
+            }
+            mx = max(mx, i - j + 1);
+        }
+        return n - mx;
     }
 };

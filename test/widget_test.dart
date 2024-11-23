@@ -1,14 +1,28 @@
 class Solution {
 public:
-    int maxEqualRowsAfterFlips(vector<vector<int>>& matrix) {
-        unordered_map<string, int> cnt;
-        int ans = 0;
-        for (auto& row : matrix) {
-            string s;
-            for (int x : row) {
-                s.push_back('0' + (row[0] == 0 ? x : x ^ 1));
+    vector<vector<char>> rotateTheBox(vector<vector<char>>& box) {
+        int m = box.size(), n = box[0].size();
+        vector<vector<char>> ans(n, vector<char>(m));
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                ans[j][m - i - 1] = box[i][j];
             }
-            ans = max(ans, ++cnt[s]);
+        }
+        for (int j = 0; j < m; ++j) {
+            queue<int> q;
+            for (int i = n - 1; ~i; --i) {
+                if (ans[i][j] == '*') {
+                    queue<int> t;
+                    swap(t, q);
+                } else if (ans[i][j] == '.') {
+                    q.push(i);
+                } else if (!q.empty()) {
+                    ans[q.front()][j] = '#';
+                    q.pop();
+                    ans[i][j] = '.';
+                    q.push(i);
+                }
+            }
         }
         return ans;
     }

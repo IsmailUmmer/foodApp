@@ -7,23 +7,20 @@ public:
             for (int j = 0; j < n; ++j) {
                 ans[j][m - i - 1] = box[i][j];
             }
-        }
-        for (int j = 0; j < m; ++j) {
-            queue<int> q;
-            for (int i = n - 1; ~i; --i) {
-                if (ans[i][j] == '*') {
-                    queue<int> t;
-                    swap(t, q);
-                } else if (ans[i][j] == '.') {
-                    q.push(i);
-                } else if (!q.empty()) {
-                    ans[q.front()][j] = '#';
-                    q.pop();
-                    ans[i][j] = '.';
-                    q.push(i);
-                }
+class Solution {
+public:
+    long long maxMatrixSum(vector<vector<int>>& matrix) {
+        long long s = 0;
+        int cnt = 0, mi = INT_MAX;
+        for (auto& row : matrix) {
+            for (int& v : row) {
+                s += abs(v);
+                mi = min(mi, abs(v));
+                cnt += v < 0;
             }
         }
-        return ans;
+        if (cnt % 2 == 0 || mi == 0) return s;
+        return s - mi * 2;
     }
 };
+ 

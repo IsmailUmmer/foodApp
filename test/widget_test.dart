@@ -215,3 +215,19 @@ public:
         }
     }
 };
+    for (int k = 0; k < 4; ++k) {
+                int x = i + dirs[k], y = j + dirs[k + 1];
+                if (x >= 0 && x < m && y >= 0 && y < n) {
+                    int nt = t + 1;
+                    if (nt < grid[x][y]) {
+                        nt = grid[x][y] + (grid[x][y] - nt) % 2;
+                    }
+                    if (nt < dist[x][y]) {
+                        dist[x][y] = nt;
+                        pq.emplace(nt, x, y);
+                    }
+                }
+            }
+        }
+    }
+};

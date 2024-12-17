@@ -12,6 +12,7 @@ public:
             s += x;
             ans = max(ans, s);
         }
+        }
         
         class Solution {
 public:

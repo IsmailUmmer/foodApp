@@ -12,7 +12,17 @@ public:
             s += x;
             ans = max(ans, s);
         }
+        }class Solution {
+public:
+    int maxChunksToSorted(vector<int>& arr) {
+        int ans = 0, mx = 0;
+        for (int i = 0; i < arr.size(); ++i) {
+            mx = max(mx, arr[i]);
+            ans += i == mx;
         }
+        return ans;
+    }
+};
         class Solution {
 public:
     vector<int> finalPrices(vector<int>& prices) {

@@ -21,7 +21,8 @@ public:
             ans += i == mx;
         }
         return ans;
-    }
+    }.l
+        
 };
         class Solution {
 public:

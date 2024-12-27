@@ -8,6 +8,17 @@ public:
             d[x + k * 2 + 1]--;
             class Solution {
                 class Solution {
+                    class Solution {
+public:
+    int maxScoreSightseeingPair(vector<int>& values) {
+        int ans = 0, mx = 0;
+        for (int j = 0; j < values.size(); ++j) {
+            ans = max(ans, mx + values[j] - j);
+            mx = max(mx, values[j] + j);
+        }
+        return ans;
+    }
+};
 public:
     int findTargetSumWays(vector<int>& nums, int target) {
         int s = accumulate(nums.begin(), nums.end(), 0);

@@ -5,7 +5,24 @@ public:
         vector<int> d(m);
         for (int x : nums) {
             d[x]++;
-            d[x + k * 2 + 1]--;
+            d[x + k * 2 + 1]--;class Solution {
+    public int maxScore(String s) {
+        int l = 0, r = 0;
+        int n = s.length();
+        for (int i = 0; i < n; ++i) {
+            if (s.charAt(i) == '1') {
+                ++r;
+            }
+        }
+        int ans = 0;
+        for (int i = 0; i < n - 1; ++i) {
+            l += (s.charAt(i) - '0') ^ 1;
+            r -= s.charAt(i) - '0';
+            ans = Math.max(ans, l + r);
+        }
+        return ans;
+    }
+}
             class Solution {
                 class Solution {
                     class Solution {class Solution:

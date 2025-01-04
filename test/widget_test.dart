@@ -5,7 +5,20 @@ public:
         vector<int> d(m);
         for (int x : nums) {
             d[x]++;
-            d[x + k * 2 + 1]--;class Solution {
+            d[x + k * 2 + 1]--;class Solution class Solution {
+    public int countPalindromicSubsequence(String s) {
+        int ans = 0;
+        for (char c = 'a'; c <= 'z'; ++c) {
+            int l = s.indexOf(c), r = s.lastIndexOf(c);
+            Set<Character> cs = new HashSet<>();
+            for (int i = l + 1; i < r; ++i) {
+                cs.add(s.charAt(i));
+            }
+            ans += cs.size();
+        }
+        return ans;
+    }
+}{
     public int maxScore(String s) {
         int l = 0, r = 0;
         int n = s.length();

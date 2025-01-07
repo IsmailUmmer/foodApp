@@ -5,6 +5,21 @@ public:
         vector<int> d(m);
         for (int x : nums) {
             d[x]++;
+            class Solution {
+    public List<String> stringMatching(String[] words) {
+        List<String> ans = new ArrayList<>();
+        int n = words.length;
+        for (int i = 0; i < n; ++i) {
+            for (int j = 0; j < n; ++j) {
+                if (i != j && words[j].contains(words[i])) {
+                    ans.add(words[i]);
+                    break;
+                }
+            }
+        }
+        return ans;
+    }
+}
             d[x + k * 2 + 1]--;class Solution class Solution {
     public int countPalindromicSubsequence(String s) {
         int ans = 0;

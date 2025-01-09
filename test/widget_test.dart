@@ -8,7 +8,17 @@ public:
             class Solution {
     public List<String> stringMatching(String[] words) {
         List<String> ans = new ArrayList<>();
-        int n = words.length;
+        int n = words.length;class Solution {
+    public int prefixCount(String[] words, String pref) {
+        int ans = 0;
+        for (String w : words) {
+            if (w.startsWith(pref)) {
+                ++ans;
+            }
+        }
+        return ans;
+    }
+}
         for (int i = 0; i < n; ++i) {
             for (int j = 0; j < n; ++j) {
                 if (i != j && words[j].contains(words[i])) {

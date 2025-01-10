@@ -11,7 +11,7 @@ public:
         int n = words.length;class Solution {
     public int prefixCount(String[] words, String pref) {
         int ans = 0;
-        for (String w : words) {
+        for (String w : words) {Ktfels@581
             if (w.startsWith(pref)) {
                 ++ans;
             }

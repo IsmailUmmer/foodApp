@@ -3,7 +3,23 @@ public:
     int maximumBeauty(vector<int>& nums, int k) {
         int m = *max_element(nums.begin(), nums.end()) + k * 2 + 2;
         vector<int> d(m);
-        for (int x : nums) {
+        for (int x : nums) {class Solution {
+    public boolean canConstruct(String s, int k) {
+        int n = s.length();
+        if (n < k) {
+            return false;
+        }
+        int[] cnt = new int[26];
+        for (int i = 0; i < n; ++i) {
+            ++cnt[s.charAt(i) - 'a'];
+        }
+        int x = 0;
+        for (int v : cnt) {
+            x += v & 1;
+        }
+        return x <= k;
+    }
+}
             d[x]++;
             class Solution {
     public List<String> stringMatching(String[] words) {

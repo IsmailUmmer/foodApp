@@ -6,7 +6,7 @@ public:
         for (int x : nums) {class Solution {
     public boolean canConstruct(String s, int k) {
         int n = s.length();
-        if (n < k) {class Solution {
+        
     public boolean canBeValid(String s, String locked) {
         int n = s.length();
         if (n % 2 == 1) {

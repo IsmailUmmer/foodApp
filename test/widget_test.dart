@@ -8,6 +8,22 @@ public:
         int n = s.length();
         class Solution {
     public int minimizeXor(int num1, int num2) {
+        class Solution {
+    public int xorAllNums(int[] nums1, int[] nums2) {
+        int ans = 0;
+        if (nums2.length % 2 == 1) {
+            for (int v : nums1) {
+                ans ^= v;
+            }
+        }
+        if (nums1.length % 2 == 1) {
+            for (int v : nums2) {
+                ans ^= v;
+            }
+        }
+        return ans;
+    }
+}
         int cnt = Integer.bitCount(num2);
         int x = 0;
         for (int i = 30; i >= 0 && cnt > 0; --i) {

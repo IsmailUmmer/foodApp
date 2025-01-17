@@ -9,6 +9,15 @@ public:
         class Solution {
     public int minimizeXor(int num1, int num2) {
         class Solution {
+    public boolean doesValidArrayExist(int[] derived) {
+        int s = 0;
+        for (int x : derived) {
+            s ^= x;
+        }
+        return s == 0;
+    }
+}
+        class Solution {
     public int xorAllNums(int[] nums1, int[] nums2) {
         int ans = 0;
         if (nums2.length % 2 == 1) {

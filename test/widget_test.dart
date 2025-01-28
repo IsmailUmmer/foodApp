@@ -5,7 +5,39 @@ public:
         vector<int> d(m);
         for (int x : nums) {class Solution {class Solution {
     public int countServers(int[][] grid) {
-        int m = grid.length, n = grid[0].length;class Solution {
+        int m = grid.length, n = grid[0].length;class Solutionclass Solution {
+    private int[][] grid;
+    private int m;
+    private int n;
+
+    public int findMaxFish(int[][] grid) {
+        m = grid.length;
+        n = grid[0].length;
+        this.grid = grid;
+        int ans = 0;
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                if (grid[i][j] > 0) {
+                    ans = Math.max(ans, dfs(i, j));
+                }
+            }
+        }
+        return ans;
+    }
+
+    private int dfs(int i, int j) {
+        int cnt = grid[i][j];
+        grid[i][j] = 0;
+        int[] dirs = {-1, 0, 1, 0, -1};
+        for (int k = 0; k < 4; ++k) {
+            int x = i + dirs[k], y = j + dirs[k + 1];
+            if (x >= 0 && x < m && y >= 0 && y < n && grid[x][y] > 0) {
+                cnt += dfs(x, y);
+            }
+        }
+        return cnt;
+    }
+} {
     public int maximumInvitations(int[] favorite) {
         return Math.max(maxCycle(favorite), topologicalSort(favorite));class Solution {
     public List<Boolean> checkIfPrerequisite(int n, int[][] prerequisites, int[][] queries) {

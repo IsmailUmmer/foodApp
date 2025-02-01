@@ -2,7 +2,16 @@ class Solution {
 public:
     int maximumBeauty(vector<int>& nums, int k) {
         int m = *max_element(nums.begin(), nums.end()) + k * 2 + 2;
-        vector<int> d(m);
+        vector<int> d(m);class Solution {
+    public boolean isArraySpecial(int[] nums) {
+        for (int i = 1; i < nums.length; ++i) {
+            if (nums[i] % 2 == nums[i - 1] % 2) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
         for (int x : nums) {class Solution {class Solution {
     public int countServers(int[][] grid) {
         int m = grid.length, n = grid[0].length;class Solutionclass Solution {

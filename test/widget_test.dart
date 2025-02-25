@@ -2,7 +2,19 @@ class NumberContainers {
     private Map<Integer, Integer> d = new HashMap<>();
     private Map<Integer, TreeSet<Integer>> g = new HashMap<>();class Solution {
     public int maximumSum(int[] nums) {
-        int[] d = new int[100];
+        int[] d = new int[100];class Solution {
+    public int numOfSubarrays(int[] arr) {
+        final int mod = (int) 1e9 + 7;
+        int[] cnt = {1, 0};
+        int ans = 0, s = 0;
+        for (int x : arr) {
+            s += x;
+            ans = (ans + cnt[s & 1 ^ 1]) % mod;
+            ++cnt[s & 1];
+        }
+        return ans;
+    }
+}
         int ans = -1;
         for (int v : nums) {
             int x = 0;class Solution {/**

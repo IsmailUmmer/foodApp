@@ -9,7 +9,20 @@ class NumberContainers {
     def shortestCommonSupersequence(self, str1: str, str2: str) -> str:
         m, n = len(str1), len(str2)
         f = [[0] * (n + 1) for _ in range(m + 1)]
-        for i in range(1, m + 1):
+        for i in range(1, m + 1):class Solution:
+    def applyOperations(self, nums: List[int]) -> List[int]:
+        n = len(nums)
+        for i in range(n - 1):
+            if nums[i] == nums[i + 1]:
+                nums[i] <<= 1
+                nums[i + 1] = 0
+        ans = [0] * n
+        i = 0
+        for x in nums:
+            if x:
+                ans[i] = x
+                i += 1
+        return ans
             for j in range(1, n + 1):
                 if str1[i - 1] == str2[j - 1]:
                     f[i][j] = f[i - 1][j - 1] + 1

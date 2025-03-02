@@ -4,7 +4,14 @@ class NumberContainers {
     public int maximumSum(int[] nums) {
         int[] d = new int[100];class Solution {
     public int numOfSubarrays(int[] arr) {
-        final int mod = (int) 1e9 + 7;
+        final int mod = (int) 1e9 + 7;class Solution:
+    def mergeArrays(
+        self, nums1: List[List[int]], nums2: List[List[int]]
+    ) -> List[List[int]]:
+        cnt = Counter()
+        for i, v in nums1 + nums2:
+            cnt[i] += v
+        return sorted(cnt.items())
         int[] cnt = {1, 0};class Solution:
     def shortestCommonSupersequence(self, str1: str, str2: str) -> str:
         m, n = len(str1), len(str2)

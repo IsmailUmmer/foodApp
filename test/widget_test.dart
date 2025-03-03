@@ -6,7 +6,17 @@ class NumberContainers {
     public int numOfSubarrays(int[] arr) {
         final int mod = (int) 1e9 + 7;class Solution:
     def mergeArrays(
-        self, nums1: List[List[int]], nums2: List[List[int]]
+        self, nums1: List[List[int]], nums2: List[List[int]]class Solution:
+    def pivotArray(self, nums: List[int], pivot: int) -> List[int]:
+        a, b, c = [], [], []
+        for x in nums:
+            if x < pivot:
+                a.append(x)
+            elif x == pivot:
+                b.append(x)
+            else:
+                c.append(x)
+        return a + b + c
     ) -> List[List[int]]:
         cnt = Counter()
         for i, v in nums1 + nums2:

@@ -6,7 +6,13 @@ class NumberContainers {
     public int numOfSubarrays(int[] arr) {
         final int mod = (int) 1e9 + 7;class Solution:
     def mergeArrays(
-        self, nums1: List[List[int]], nums2: List[List[int]]class Solution:
+        self, nums1: List[List[int]], nums2: List[List[int]]class Solution:class Solution:
+    def checkPowersOfThree(self, n: int) -> bool:
+        while n:
+            if n % 3 > 1:
+                return False
+            n //= 3
+        return True
     def pivotArray(self, nums: List[int], pivot: int) -> List[int]:
         a, b, c = [], [], []
         for x in nums:

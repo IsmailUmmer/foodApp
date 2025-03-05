@@ -2,7 +2,9 @@ class NumberContainers {
     private Map<Integer, Integer> d = new HashMap<>();
     private Map<Integer, TreeSet<Integer>> g = new HashMap<>();class Solution {
     public int maximumSum(int[] nums) {
-        int[] d = new int[100];class Solution {
+        int[] d = new int[100];class Solution {class Solution:
+    def coloredCells(self, n: int) -> int:
+        return 2 * n * (n - 1) + 1
     public int numOfSubarrays(int[] arr) {
         final int mod = (int) 1e9 + 7;class Solution:
     def mergeArrays(

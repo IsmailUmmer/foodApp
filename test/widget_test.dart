@@ -8,7 +8,19 @@ class NumberContainers {
     public int numOfSubarrays(int[] arr) {
         final int mod = (int) 1e9 + 7;class Solution:
     def mergeArrays(
-        self, nums1: List[List[int]], nums2: List[List[int]]class Solution:class Solution:
+        self, nums1: List[List[int]], nums2: List[List[int]]class Solution:class Solution:class Solution {
+public:
+    int minimumRecolors(string blocks, int k) {
+        int cnt = count(blocks.begin(), blocks.begin() + k, 'W');
+        int ans = cnt;
+        for (int i = k; i < blocks.size(); ++i) {
+            cnt += blocks[i] == 'W';
+            cnt -= blocks[i - k] == 'W';
+            ans = min(ans, cnt);
+        }
+        return ans;
+    }
+};
     def checkPowersOfThree(self, n: int) -> bool:
         while n:
             if n % 3 > 1:

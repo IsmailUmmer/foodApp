@@ -4,7 +4,22 @@ class NumberContainers {
     public int maximumSum(int[] nums) {
         int[] d = new int[100];class Solution {class Solution:
     def coloredCells(self, n: int) -> int:
-        return 2 * n * (n - 1) + 1
+        return 2 * n * (n - 1) + 1class Solution {
+public:
+    int numberOfAlternatingGroups(vector<int>& colors, int k) {
+        int n = colors.size();
+        int ans = 0, cnt = 0;
+        for (int i = 0; i < n << 1; ++i) {
+            if (i && colors[i % n] == colors[(i - 1) % n]) {
+                cnt = 1;
+            } else {
+                ++cnt;
+            }
+            ans += i >= n && cnt >= k ? 1 : 0;
+        }
+        return ans;
+    }
+};
     public int numOfSubarrays(int[] arr) {
         final int mod = (int) 1e9 + 7;class Solution:
     def mergeArrays(

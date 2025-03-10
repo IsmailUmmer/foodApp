@@ -4,6 +4,8 @@ class NumberContainers {
     public int maximumSum(int[] nums) {
         int[] d = new int[100];class Solution {class Solution:
     def coloredCells(self, n: int) -> int:
+
+                                               
         return 2 * n * (n - 1) + 1class Solution {
 public:
     int numberOfAlternatingGroups(vector<int>& colors, int k) {

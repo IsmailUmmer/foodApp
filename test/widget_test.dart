@@ -3,7 +3,20 @@ class NumberContainers {
     private Map<Integer, TreeSet<Integer>> g = new HashMap<>();class Solution {
     public int maximumSum(int[] nums) {
         int[] d = new int[100];class Solution {class Solution:
-    def coloredCells(self, n: int) -> int:
+    def coloredCells(self, n: int) -> int:class Solution {
+public:
+    int maximumCount(vector<int>& nums) {
+        int a = 0, b = 0;
+        for (int x : nums) {
+            if (x > 0) {
+                ++a;
+            } else if (x < 0) {
+                ++b;
+            }
+        }
+        return max(a, b);
+    }
+};
 class Solution {
 public:
     int numberOfSubstrings(string s) {

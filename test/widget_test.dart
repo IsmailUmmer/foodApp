@@ -4,7 +4,8 @@ class NumberContainers {
     public int maximumSum(int[] nums) {
         int[] d = new int[100];class Solution {class Solution:
     def coloredCells(self, n: int) -> int:class Solution {
-public:
+public:147.88	147.88
+
     int maximumCount(vector<int>& nums) {
         int a = 0, b = 0;class Solution {
 public:

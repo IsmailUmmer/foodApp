@@ -2,11 +2,217 @@ class NumberContainers {
     private Map<Integer, Integer> d = new HashMap<>();
     private Map<Integer, TreeSet<Integer>> g = new HashMap<>();class Solution {
     public int maximumSum(int[] nums) {
-        int[] d = new int[100];class Solution {
+        int[] d = new int[100];class Solution {class Solution:
+    def coloredCells(self, n: int) -> int:class Solution {
+public:147.88	147.88class UnionFind {
+public:
+    UnionFind(int n) {
+        p = vector<int>(n);class Solution {
+public:
+    int countPaths(int n, vector<vector<int>>& roads) {
+        const long long inf = LLONG_MAX / 2;
+        const int mod = 1e9 + 7;
+
+        vector<vector<long long>> g(n, vector<long long>(n, inf));
+        for (auto& e : g) {
+            fill(e.begin(), e.end(), inf);
+        }
+
+        for (auto& r : roads) {
+            int u = r[0], v = r[1], t = r[2];
+            g[u][v] = t;
+            g[v][u] = t;
+        }
+
+        g[0][0] = 0;
+
+        vector<long long> dist(n, inf);
+        fill(dist.begin(), dist.end(), inf);
+        dist[0] = 0;
+
+        vector<long long> f(n);
+        f[0] = 1;
+
+        vector<bool> vis(n);
+        for (int i = 0; i < n; ++i) {
+            int t = -1;
+            for (int j = 0; j < n; ++j) {
+                if (!vis[j] && (t == -1 || dist[j] < dist[t])) {
+                    t = j;
+                }
+            }
+            vis[t] = true;
+            for (int j = 0; j < n; ++j) {
+                if (j == t) {
+                    continue;
+                }
+                long long ne = dist[t] + g[t][j];
+                if (dist[j] > ne) {
+                    dist[j] = ne;
+                    f[j] = f[t];
+                } else if (dist[j] == ne) {
+                    f[j] = (f[j] + f[t]) % mod;
+                }
+            }
+        }
+        return (int) f[n - 1];
+    }
+};
+        size = vector<int>(n, 1);
+        iota(p.begin(), p.end(), 0);
+    }
+
+    bool unite(int a, int b) {
+        int pa = find(a), pb = find(b);
+        if (pa == pb) {
+            return false;
+        }
+        if (size[pa] > size[pb]) {
+            p[pb] = pa;
+            size[pa] += size[pb];
+        } else {
+            p[pa] = pb;
+            size[pb] += size[pa];
+        }
+        return true;
+    }
+
+    int find(int x) {
+        if (p[x] != x) {
+            p[x] = find(p[x]);
+        }
+        return p[x];
+    }
+
+    int getSize(int x) {
+        return size[find(x)];
+    }
+
+private:
+    vector<int> p, size;
+};
+
+class Solution {
+public:
+    vector<int> minimumCost(int n, vector<vector<int>>& edges, vector<vector<int>>& query) {
+        g = vector<int>(n, -1);
+        uf = new UnionFind(n);
+        for (auto& e : edges) {
+            uf->unite(e[0], e[1]);
+        }
+        for (auto& e : edges) {
+            int root = uf->find(e[0]);
+            g[root] &= e[2];
+        }
+        vector<int> ans;
+        for (auto& q : query) {
+            ans.push_back(f(q[0], q[1]));
+        }
+        return ans;
+    }
+
+private:
+    UnionFind* uf;
+    vector<int> g;
+
+    int f(int u, int v) {
+        if (u == v) {
+            return 0;
+        }
+        int a = uf->find(u), b = uf->find(v);
+        return a == b ? g[a] : -1;
+    }
+};
+
+    int maximumCount(vector<int>& nums) {
+        int a = 0, b = 0;class Solution {
+public:
+    int minZeroArray(vector<int>& nums, vector<vector<int>>& queries) {
+        int n = nums.size();
+        int d[n + 1];
+        int m = queries.size();
+        int l = 0, r = m + 1;
+        auto check = [&](int k) -> bool {
+            memset(d, 0, sizeof(d));
+            for (int i = 0; i < k; ++i) {
+                int l = queries[i][0], r = queries[i][1], val = queries[i][2];
+                d[l] += val;
+                d[r + 1] -= val;
+            }
+            for (int i = 0, s = 0; i < n; ++i) {
+                s += d[i];
+                if (nums[i] > s) {
+                    return false;
+                }
+            }
+            return true;
+        };
+        while (l < r) {
+            int mid = (l + r) >> 1;
+            if (check(mid)) {
+                r = mid;
+            } else {
+                l = mid + 1;
+            }
+        }
+        return l > m ? -1 : l;
+    }
+};
+        for (int x : nums) {
+            if (x > 0) {
+                ++a;
+            } else if (x < 0) {
+                ++b;
+            }
+        }
+        return max(a, b);
+    }
+};
+class Solution {
+public:
+    int numberOfSubstrings(string s) {
+        int d[3] = {-1, -1, -1};
+        int ans = 0;
+        for (int i = 0; i < s.size(); ++i) {
+            d[s[i] - 'a'] = i;
+            ans += min(d[0], min(d[1], d[2])) + 1;
+        }
+        return ans;
+    }
+};
+                                               
+        return 2 * n * (n - 1) + 1class Solution {
+public:
+    int numberOfAlternatingGroups(vector<int>& colors, int k) {
+        int n = colors.size();
+        int ans = 0, cnt = 0;
+        for (int i = 0; i < n << 1; ++i) {
+            if (i && colors[i % n] == colors[(i - 1) % n]) {
+                cnt = 1;
+            } else {
+                ++cnt;
+            }
+            ans += i >= n && cnt >= k ? 1 : 0;
+        }
+        return ans;
+    }
+};
     public int numOfSubarrays(int[] arr) {
         final int mod = (int) 1e9 + 7;class Solution:
     def mergeArrays(
-        self, nums1: List[List[int]], nums2: List[List[int]]class Solution:class Solution:
+        self, nums1: List[List[int]], nums2: List[List[int]]class Solution:class Solution:class Solution {
+public:
+    int minimumRecolors(string blocks, int k) {
+        int cnt = count(blocks.begin(), blocks.begin() + k, 'W');
+        int ans = cnt;
+        for (int i = k; i < blocks.size(); ++i) {
+            cnt += blocks[i] == 'W';
+            cnt -= blocks[i - k] == 'W';
+            ans = min(ans, cnt);
+        }
+        return ans;
+    }
+};
     def checkPowersOfThree(self, n: int) -> bool:
         while n:
             if n % 3 > 1:

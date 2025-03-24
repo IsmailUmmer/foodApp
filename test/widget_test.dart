@@ -9,7 +9,22 @@ public:
     UnionFind(int n) {
         p = vector<int>(n);class Solution {
 public:
-    int countPaths(int n, vector<vector<int>>& roads) {
+    int countPaths(int n, vector<vector<int>>& roads) {class Solution {
+public:
+    int countDays(int days, vector<vector<int>>& meetings) {
+        sort(meetings.begin(), meetings.end());
+        int ans = 0, last = 0;
+        for (auto& e : meetings) {
+            int st = e[0], ed = e[1];
+            if (last < st) {
+                ans += st - last - 1;
+            }
+            last = max(last, ed);
+        }
+        ans += days - last;
+        return ans;
+    }
+};
         const long long inf = LLONG_MAX / 2;
         const int mod = 1e9 + 7;
 

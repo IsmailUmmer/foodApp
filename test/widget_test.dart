@@ -8,7 +8,19 @@ public:
     vector<int> partitionLabels(string s) {
         int last[26] = {0};
         int n = s.size();
-        for (int i = 0; i < n; ++i) {
+        for (int i = 0; i < n; ++i) {class Solution {
+public:
+    long long maximumTripletValue(vector<int>& nums) {
+        long long ans = 0, mxDiff = 0;
+        int mx = 0;
+        for (int x : nums) {
+            ans = max(ans, mxDiff * x);
+            mxDiff = max(mxDiff, 1LL * mx - x);
+            mx = max(mx, x);
+        }
+        return ans;
+    }
+};
             last[s[i] - 'a'] = i;
         }
         vector<int> ans;

@@ -38,7 +38,37 @@ public:
 public:
     const int dirs[5] = {-1, 0, 1, 0, -1};
 
-    vector<int> maxPoints(vector<vector<int>>& grid, vector<int>& queries) {
+    vector<int> maxPoints(vector<vector<int>>& grid, vector/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    TreeNode* lcaDeepestLeaves(TreeNode* root) {
+        auto dfs = [&](this auto&& dfs, TreeNode* root) -> pair<TreeNode*, int> {
+            if (!root) {
+                return {nullptr, 0};
+            }
+            auto [l, d1] = dfs(root->left);
+            auto [r, d2] = dfs(root->right);
+            if (d1 > d2) {
+                return {l, d1 + 1};
+            }
+            if (d1 < d2) {
+                return {r, d2 + 1};
+            }
+            return {root, d1 + 1};
+        };
+        return dfs(root).first;
+    }
+};<int>& queries) {
         int k = queries.size();
         vector<pair<int, int>> qs(k);
         for (int i = 0; i < k; ++i) qs[i] = {queries[i], i};

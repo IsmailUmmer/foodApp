@@ -6,7 +6,19 @@ class NumberContainers {
 public:
     bool canPartition(vector<int>& nums) {
         int s = accumulate(nums.begin(), nums.end(), 0);
-        if (s % 2 == 1) {
+        if (s % 2 == 1) {class Solution {
+public:
+    int minimumOperations(vector<int>& nums) {
+        unordered_set<int> s;
+        for (int i = nums.size() - 1; ~i; --i) {
+            if (s.contains(nums[i])) {
+                return i / 3 + 1;
+            }
+            s.insert(nums[i]);
+        }
+        return 0;
+    }
+};
             return false;
         }
         int n = nums.size();

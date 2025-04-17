@@ -6,7 +6,18 @@ class NumberContainers {
 public:
     bool canPartition(vector<int>& nums) {
         int s = accumulate(nums.begin(), nums.end(), 0);
-        if (s % 2 == 1) {class Solution {class Solution {class BinaryIndexedTree {
+        if (s % 2 == 1) {class Solution {class Solution {class BinaryIndexedTree {class Solution {
+public:
+    int countPairs(vector<int>& nums, int k) {
+        int ans = 0;
+        for (int j = 1; j < nums.size(); ++j) {
+            for (int i = 0; i < j; ++i) {
+                ans += nums[i] == nums[j] && (i * j % k) == 0;
+            }
+        }
+        return ans;
+    }
+};
 public:
     int n;
     vector<int> c;

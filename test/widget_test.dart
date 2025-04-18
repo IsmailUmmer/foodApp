@@ -1,670 +1,779 @@
+class NumberContainers {
+    private Map<Integer, Integer> d = new HashMap<>();
+    private Map<Integer, TreeSet<Integer>> g = new HashMap<>();class Solution {
+    public int maximumSum(int[] nums) {
+        int[] d = new int[100];class Solution {class Solution:class Solution {
+public:
+    bool canPartition(vector<int>& nums) {
+        int s = accumulate(nums.begin(), nums.end(), 0);
+        if (s % 2 == 1) {class Solution {class Solution {class BinaryIndexedTree {class Solution {
+public:
+    int countPairs(vector<int>& nums, int k) {
+        int ans = 0;
+        for (int j = 1; j < nums.size(); ++j) {
+            for (int i = 0; i < j; ++i) {
+                ans += nums[i] == nums[j] && (i * j % k) == 0;class Solution {
+public:
+    string countAndSay(int n) {
+        string s = "1";
+        while (--n) {
+            string t = "";
+            for (int i = 0; i < s.size();) {
+                int j = i;
+                while (j < s.size() && s[j] == s[i]) ++j;
+                t += to_string(j - i);
+                t += s[i];
+                i = j;
+            }
+            s = t;
+        }
+        return s;
+    }
+};
+            }
+        }
+        return ans;
+    }
+};
+public:
+    int n;
+    vector<int> c;
+
+    BinaryIndexedTree(int _n)
+        : n(_n)
+        , c(_n + 1) {}
+
+    void update(int x, int delta) {
+        while (x <= n) {
+            c[x] += delta;
+            x += lowbit(x);
+        }
+    }
+
+    int query(int x) {
+        int s = 0;
+        while (x > 0) {
+            s += c[x];
+            x -= lowbit(x);
+        }
+        return s;
+    }
+
+    int lowbit(int x) {
+        return x & -x;
+    }
+};
+
 class Solution {
 public:
-    int maximumBeauty(vector<int>& nums, int k) {
-        int m = *max_element(nums.begin(), nums.end()) + k * 2 + 2;
-        vector<int> d(m);
-        for (int x : nums) {class Solution {
-    public boolean canConstruct(String s, int k) {
-        int n = s.length();
-        class Solution {
-    public int minimizeXor(int num1, int num2) {
-        class Solution {
-    public boolean doesValidArrayExist(int[] derived) {
-        int s = 0;
-        for (int x : derived) {
-            s ^= x;
+    long long goodTriplets(vector<int>& nums1, vector<int>& nums2) {
+        int n = nums1.size();
+        vector<int> pos(n);
+        for (int i = 0; i < n; ++i) pos[nums2[i]] = i + 1;
+        BinaryIndexedTree* tree = new BinaryIndexedTree(n);
+        long long ans = 0;
+        for (int& num : nums1) {
+            int p = pos[num];
+            int left = tree->query(p);
+            int right = n - p - (tree->query(n) - tree->query(p));
+            ans += 1ll * left * right;
+            tree->update(p, 1);
         }
-        return s == 0;
+        return ans;
     }
-}
-        class Solution {
-    public int xorAllNums(int[] nums1, int[] nums2) {
+};
+public:
+    int countGoodTriplets(vector<int>& arr, int a, int b, int c) {
+        int n = arr.size();
         int ans = 0;
-        if (nums2.length % 2 == 1) {
-            for (int v : nums1) {
-                ans ^= v;
-            }
-        }
-        if (nums1.length % 2 == 1) {
-            for (int v : nums2) {
-                ans ^= v;
-            }
-        }
-        return ans;
-    }
-}
-        int cnt = Integer.bitCount(num2);
-        int x = 0;
-        for (int i = 30; i >= 0 && cnt > 0; --i) {
-            if ((num1 >> i & 1) == 1) {
-                x |= 1 << i;
-                --cnt;
-            }
-        }
-        for (int i = 0; cnt > 0; ++i) {
-            if ((num1 >> i & 1) == 0) {
-                x |= 1 << i;
-                --cnt;
-            }
-        }
-        return x;
-    }
-}
-    public boolean canBeValid(String s, String locked) {
-        int n = s.length();
-        if (n % 2 == 1) {
-            return false;
-        }class Solution {
-    public int[] findThePrefixCommonArray(int[] A, int[] B) {
-        int n = A.length;
-        int[] ans = new int[n];
-        int[] vis = new int[n + 1];
-        Arrays.fill(vis, 1);
-        int s = 0;
         for (int i = 0; i < n; ++i) {
-            vis[A[i]] ^= 1;
-            s += vis[A[i]];
-            vis[B[i]] ^= 1;
-            s += vis[B[i]];
-            ans[i] = s;
-        }
-        return ans;
-    }
-}
-        int x = 0;
-        for (int i = 0; i < n; ++i) {
-            if (s.charAt(i) == '(' || locked.charAt(i) == '0') {
-                ++x;
-            } else if (x > 0) {
-                --x;
-            } else {
-                return false;
-            }
-        }
-        x = 0;
-        for (int i = n - 1; i >= 0; --i) {
-            if (s.charAt(i) == ')' || locked.charAt(i) == '0') {
-                ++x;
-            } else if (x > 0) {
-                --x;
-            } else {
-                return false;
-            }
-        }
-        return true;
-    }
-}
-            return false;
-        }
-        int[] cnt = new int[26];
-        for (int i = 0; i < n; ++i) {
-            ++cnt[s.charAt(i) - 'a'];
-        }
-        int x = 0;
-        for (int v : cnt) {
-            x += v & 1;
-        }
-        return x <= k;
-    }
-}
-            d[x]++;
-            class Solution {
-    public List<String> stringMatching(String[] words) {
-        List<String> ans = new ArrayList<>();
-        int n = words.length;class Solution {
-    public int prefixCount(String[] words, String pref) {
-        int ans = 0;
-        for (String w : words) {Ktfels@581
-            if (w.startsWith(pref)) {
-                ++ans;
-            }
-        }
-        return ans;
-    }
-}
-        for (int i = 0; i < n; ++i) {
-            for (int j = 0; j < n; ++j) {
-                if (i != j && words[j].contains(words[i])) {
-                    ans.add(words[i]);
-                    break;
+            for (int j = i + 1; j < n; ++j) {
+                for (int k = j + 1; k < n; ++k) {
+                    ans += abs(arr[i] - arr[j]) <= a && abs(arr[j] - arr[k]) <= b && abs(arr[i] - arr[k]) <= c;
                 }
             }
         }
         return ans;
     }
-}
-            d[x + k * 2 + 1]--;class Solution class Solution {
-    public int countPalindromicSubsequence(String s) {
-        int ans = 0;
-        for (char c = 'a'; c <= 'z'; ++c) {
-            int l = s.indexOf(c), r = s.lastIndexOf(c);
-            Set<Character> cs = new HashSet<>();
-            for (int i = l + 1; i < r; ++i) {
-                cs.add(s.charAt(i));
-            }class Solution {
-    public int[] minOperations(String boxes) {
-        int n = boxes.length();
-        int[] ans = new int[n];
-        for (int i = 1, cnt = 0; i < n; ++i) {
-            if (boxes.charAt(i - 1) == '1') {
-                ++cnt;
+};
+public:
+    int minimumOperations(vector<int>& nums) {
+        unordered_set<int> s;
+        for (int i = nums.size() - 1; ~i; --i) {
+            if (s.contains(nums[i])) {
+                return i / 3 + 1;
             }
-            ans[i] = ans[i - 1] + cnt;
+            s.insert(nums[i]);
         }
-        for (int i = n - 2, cnt = 0, s = 0; i >= 0; --i) {
-            if (boxes.charAt(i + 1) == '1') {
-                ++cnt;
-            }
-            s += cnt;
-            ans[i] += s;
-        }
-        return ans;
+        return 0;
     }
-}
-            ans += cs.size();
-        }class Solution {
-    public String shiftingLetters(String s, int[][] shifts) {
-        int n = s.length();
-        int[] d = new int[n + 1];
-        for (int[] e : shifts) {
-            if (e[2] == 0) {
-                e[2]--;
-            }
-            d[e[0]] += e[2];
-            d[e[1] + 1] -= e[2];
+};
+            return false;
         }
+        int n = nums.size();
+        int m = s >> 1;
+        bool f[n + 1][m + 1];
+        memset(f, false, sizeof(f));
+        f[0][0] = true;
         for (int i = 1; i <= n; ++i) {
-            d[i] += d[i - 1];
-        }
-        StringBuilder ans = new StringBuilder();
-        for (int i = 0; i < n; ++i) {
-            int j = (s.charAt(i) - 'a' + d[i] % 26 + 26) % 26;
-            ans.append((char) ('a' + j));
-        }
-        return ans.toString();
-    }
-}
-        return ans;
-    }
-}{
-    public int maxScore(String s) {
-        int l = 0, r = 0;
-        int n = s.length();
-        for (int i = 0; i < n; ++i) {
-            if (s.charAt(i) == '1') {
-                ++r;
-                class Solution {
-    public int waysToSplitArray(int[] nums) {
-        long s = 0;
-        for (int x : nums) {
-            s += x;
-        }
-        long t = 0;
-        int ans = 0;
-        for (int i = 0; i + 1 < nums.length; ++i) {
-            t += nums[i];
-            ans += t >= s - t ? 1 : 0;
-        }
-        return ans;
-    }
-}
-            }class Solution {
-    private List<Integer> nums = new ArrayList<>();
-
-    public int[] vowelStrings(String[] words, int[][] queries) {
-        Set<Character> vowels = Set.of('a', 'e', 'i', 'o', 'u');
-        for (int i = 0; i < words.length; ++i) {
-            char a = words[i].charAt(0), b = words[i].charAt(words[i].length() - 1);
-            if (vowels.contains(a) && vowels.contains(b)) {
-                nums.add(i);
+            int x = nums[i - 1];
+            for (int j = 0; j <= m; ++j) {
+                f[i][j] = f[i - 1][j] || (j >= x && f[i - 1][j - x]);
             }
         }
-        int m = queries.length;
-        int[] ans = new int[m];
+        return f[n][m];
+    }
+};
+    def coloredCells(self, n: int) -> int:class Solution {class Solution {class Solution {
+public:class Solution {
+public:
+    int subsetXORSum(vector<int>& nums) {
+        int n = nums.size();
+        int ans = 0;
+        for (int i = 0; i < 1 << n; ++i) {
+            int s = 0;
+            for (int j = 0; j < n; ++j) {
+                if (i >> j & 1) {
+                    s ^= nums[j];
+                }
+            }
+            ans += s;
+        }
+        return ans;
+    }
+};
+    vector<int> partitionLabels(string s) {
+        int last[26] = {0};
+        int n = s.size();
+        for (int i = 0; i < n; ++i) {class Solution {
+public:
+    long long maximumTripletValue(vector<int>& nums) {
+        long long ans = 0, mxDiff = 0;
+        int mx = 0;
+        for (int x : nums) {
+            ans = max(ans, mxDiff * x);
+            mxDiff = max(mxDiff, 1LL * mx - x);
+            mx = max(mx, x);
+        }
+        return ans;
+    }
+};
+            last[s[i] - 'a'] = i;
+        }
+        vector<int> ans;
+        int mx = 0, j = 0;
+        for (int i = 0; i < n; ++i) {
+            mx = max(mx, last[s[i] - 'a']);
+            if (mx == i) {
+                ans.push_back(i - j + 1);
+                j = i + 1;
+            }
+        }
+        return ans;
+    }
+};
+public:
+    const int dirs[5] = {-1, 0, 1, 0, -1};
+
+    vector<int> maxPoints(vector<vector<int>>& grid, vector/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    TreeNode* lcaDeepestLeaves(TreeNode* root) {
+        auto dfs = [&](this auto&& dfs, TreeNode* root) -> pair<TreeNode*, int> {
+            if (!root) {
+                return {nullptr, 0};
+            }
+            auto [l, d1] = dfs(root->left);
+            auto [r, d2] = dfs(root->right);
+            if (d1 > d2) {
+                return {l, d1 + 1};
+            }
+            if (d1 < d2) {
+                return {r, d2 + 1};
+            }
+            return {root, d1 + 1};
+        };
+        return dfs(root).first;
+    }
+};<int>& queries) {
+        int k = queries.size();
+        vector<pair<int, int>> qs(k);
+        for (int i = 0; i < k; ++i) qs[i] = {queries[i], i};
+        sort(qs.begin(), qs.end());
+        vector<int> ans(k);
+        int m = grid.size(), n = grid[0].size();
+        bool vis[m][n];
+        memset(vis, 0, sizeof vis);
+        vis[0][0] = true;
+        priority_queue<tuple<int, int, int>, vector<tuple<int, int, int>>, greater<tuple<int, int, int>>> q;
+        q.push({grid[0][0], 0, 0});
+        int cnt = 0;
+        for (auto& e : qs) {
+            int v = e.first;
+            k = e.second;
+            while (!q.empty() && get<0>(q.top()) < v) {
+                auto [_, i, j] = q.top();
+                q.pop();
+                ++cnt;
+                for (int h = 0; h < 4; ++h) {
+                    int x = i + dirs[h], y = j + dirs[h + 1];
+                    if (x >= 0 && x < m && y >= 0 && y < n && !vis[x][y]) {
+                        vis[x][y] = true;
+                        q.push({grid[x][y], x, y});
+                    }
+                }
+            }
+            ans[k] = cnt;
+        }
+        return ans;
+    }
+};
+public:147.88	147.88class UnionFind {class Solution {
+public:
+    int minimumIndex(vector<int>& nums) {
+        int x = 0, cnt = 0;
+        unordered_map<int, int> freq;
+        for (int v : nums) {
+            ++freq[v];
+            if (freq[v] > cnt) {
+                cnt = freq[v];
+                x = v;
+            }
+        }
+        int cur = 0;
+        for (int i = 1; i <= nums.size(); ++i) {
+            if (nums[i - 1] == x) {
+                ++cur;
+                if (cur * 2 > i && (cnt - cur) * 2 > nums.size() - i) {
+                    return i - 1;
+                }
+            }
+        }
+        return -1;
+    }
+};
+public:
+    UnionFind(int n) {
+        p = vector<int>(n);class Solution {class Solution {
+public:
+    int minOperations(vector<vector<int>>& grid, int x) {
+        int m = grid.size(), n = grid[0].size();
+        int mod = grid[0][0] % x;
+        int nums[m * n];
         for (int i = 0; i < m; ++i) {
-            int l = queries[i][0], r = queries[i][1];
-            ans[i] = search(r + 1) - search(l);
+            for (int j = 0; j < n; ++j) {
+                if (grid[i][j] % x != mod) {
+                    return -1;
+                }
+                nums[i * n + j] = grid[i][j];
+            }
+        }
+        sort(nums, nums + m * n);
+        int mid = nums[(m * n) >> 1];
+        int ans = 0;
+        for (int v : nums) {
+            ans += abs(v - mid) / x;
+        }
+        return ans;
+    }
+};
+public:
+    int countPaths(int n, vector<vector<int>>& roads) {class Solution {
+public:
+    int countDays(int days, vector<vector<int>>& meetings) {
+        sort(meetings.begin(), meetings.end());
+        int ans = 0, last = 0;
+        for (auto& e : meetings) {
+            int st = e[0], ed = e[1];
+            if (last < st) {
+                ans += st - last - 1;
+            }
+            last = max(last, ed);
+        }
+        ans += days - last;
+        return ans;
+    }
+};
+        const long long inf = LLONG_MAX / 2;
+        const int mod = 1e9 + 7;
+
+        vector<vector<long long>> g(n, vector<long long>(n, inf));
+        for (auto& e : g) {
+            fill(e.begin(), e.end(), inf);
+        }
+
+        for (auto& r : roads) {
+            int u = r[0], v = r[1], t = r[2];
+            g[u][v] = t;
+            g[v][u] = t;
+        }
+
+        g[0][0] = 0;
+
+        vector<long long> dist(n, inf);
+        fill(dist.begin(), dist.end(), inf);
+        dist[0] = 0;
+
+        vector<long long> f(n);
+        f[0] = 1;
+
+        vector<bool> vis(n);
+        for (int i = 0; i < n; ++i) {
+            int t = -1;
+            for (int j = 0; j < n; ++j) {
+                if (!vis[j] && (t == -1 || dist[j] < dist[t])) {
+                    t = j;
+                }
+            }
+            vis[t] = true;
+            for (int j = 0; j < n; ++j) {
+                if (j == t) {
+                    continue;
+                }
+                long long ne = dist[t] + g[t][j];
+                if (dist[j] > ne) {
+                    dist[j] = ne;
+                    f[j] = f[t];
+                } else if (dist[j] == ne) {
+                    f[j] = (f[j] + f[t]) % mod;
+                }
+            }
+        }
+        return (int) f[n - 1];
+    }
+};
+        size = vector<int>(n, 1);
+        iota(p.begin(), p.end(), 0);
+    }
+
+    bool unite(int a, int b) {
+        int pa = find(a), pb = find(b);
+        if (pa == pb) {
+            return false;
+        }
+        if (size[pa] > size[pb]) {
+            p[pb] = pa;
+            size[pa] += size[pb];
+        } else {
+            p[pa] = pb;
+            size[pb] += size[pa];
+        }
+        return true;
+    }
+
+    int find(int x) {
+        if (p[x] != x) {
+            p[x] = find(p[x]);
+        }
+        return p[x];
+    }
+
+    int getSize(int x) {
+        return size[find(x)];
+    }
+
+private:
+    vector<int> p, size;
+};
+
+class Solution {
+public:
+    vector<int> minimumCost(int n, vector<vector<int>>& edges, vector<vector<int>>& query) {
+        g = vector<int>(n, -1);
+        uf = new UnionFind(n);
+        for (auto& e : edges) {
+            uf->unite(e[0], e[1]);
+        }
+        for (auto& e : edges) {
+            int root = uf->find(e[0]);
+            g[root] &= e[2];
+        }
+        vector<int> ans;
+        for (auto& q : query) {
+            ans.push_back(f(q[0], q[1]));
         }
         return ans;
     }
 
-    private int search(int x) {
-        int l = 0, r = nums.size();
+private:
+    UnionFind* uf;
+    vector<int> g;
+
+    int f(int u, int v) {
+        if (u == v) {
+            return 0;
+        }
+        int a = uf->find(u), b = uf->find(v);
+        return a == b ? g[a] : -1;
+    }
+};
+
+    int maximumCount(vector<int>& nums) {
+        int a = 0, b = 0;class Solution {
+public:
+    int minZeroArray(vector<int>& nums, vector<vector<int>>& queries) {
+        int n = nums.size();
+        int d[n + 1];
+        int m = queries.size();
+        int l = 0, r = m + 1;
+        auto check = [&](int k) -> bool {
+            memset(d, 0, sizeof(d));
+            for (int i = 0; i < k; ++i) {
+                int l = queries[i][0], r = queries[i][1], val = queries[i][2];
+                d[l] += val;
+                d[r + 1] -= val;
+            }
+            for (int i = 0, s = 0; i < n; ++i) {
+                s += d[i];
+                if (nums[i] > s) {
+                    return false;
+                }
+            }
+            return true;
+        };
         while (l < r) {
             int mid = (l + r) >> 1;
-            if (nums.get(mid) >= x) {
+            if (check(mid)) {
                 r = mid;
             } else {
                 l = mid + 1;
             }
         }
-        return l;
+        return l > m ? -1 : l;
     }
-}
+};
+        for (int x : nums) {
+            if (x > 0) {
+                ++a;
+            } else if (x < 0) {
+                ++b;
+            }
         }
+        return max(a, b);
+    }
+};
+class Solution {
+public:
+    int numberOfSubstrings(string s) {
+        int d[3] = {-1, -1, -1};
         int ans = 0;
-        for (int i = 0; i < n - 1; ++i) {
-            l += (s.charAt(i) - '0') ^ 1;
-            r -= s.charAt(i) - '0';
-            ans = Math.max(ans, l + r);
-        }
-        return ans;
-    }
-}
-            class Solution {
-                class Solution {
-                    class Solution {class Solution:
-                                    class Solution {
-    private final int[] valid = {1, 7, 30};
-    private int[] days;
-    private int[] costs;
-    private Integer[] f;
-    private int n;
-
-    public int mincostTickets(int[] days, int[] costs) {
-        n = days.length;
-        f = new Integer[n];
-        this.days = days;
-        this.costs = costs;
-        return dfs(0);
-    }
-
-    private int dfs(int i) {
-        if (i >= n) {
-            return 0;
-        }
-        if (f[i] != null) {
-            return f[i];
-        }
-        f[i] = Integer.MAX_VALUE;
-        for (int k = 0; k < 3; ++k) {
-            int j = Arrays.binarySearch(days, days[i] + valid[k]);
-            j = j < 0 ? -j - 1 : j;
-            f[i] = Math.min(f[i], dfs(j) + costs[k]);
-        }
-        return f[i];
-    }
-}
-    def numWays(self, words: List[str], target: str) -> int:
-        @cache
-        def dfs(i: int, j: int) -> int:
-            if i >= m:
-                return 1
-            if j >= n:
-                return 0
-            ans = dfs(i + 1, j + 1) * cnt[j][ord(target[i]) - ord('a')]
-            ans = (ans + dfs(i, j + 1)) % mod
-            return ans
-
-        m, n = len(target), len(words[0])
-        cnt = [[0] * 26 for _ in range(n)]
-        for w in words:
-            for j, c in enumerate(w):
-                cnt[j][ord(c) - ord('a')] += 1
-        mod = 10**9 + 7
-        return dfs(0, 0)
-public:
-    int maxScoreSightseeingPair(vector<int>& values) {
-        int ans = 0, mx = 0;
-        for (int j = 0; j < values.size(); ++j) {
-            ans = max(ans, mx + values[j] - j);
-            mx = max(mx, values[j] + j);
+        for (int i = 0; i < s.size(); ++i) {
+            d[s[i] - 'a'] = i;
+            ans += min(d[0], min(d[1], d[2])) + 1;
         }
         return ans;
     }
 };
+                                               
+        return 2 * n * (n - 1) + 1class Solution {
 public:
-    int findTargetSumWays(vector<int>& nums, int target) {
-        int s = accumulate(nums.begin(), nums.end(), 0);
-        if (s < target || (s - target) % 2) {
-            return 0;
-        }
-        int m = nums.size();
-        int n = (s - target) / 2;
-        int f[m + 1][n + 1];
-        memset(f, 0, sizeof(f));
-        f[0][0] = 1;
-        for (int i = 1; i <= m; ++i) {
-            for (int j = 0; j <= n; ++j) {
-                f[i][j] = f[i - 1][j];
-                if (j >= nums[i - 1]) {
-                    f[i][j] += f[i - 1][j - nums[i - 1]];
-                }
-            }
-        }
-        return f[m][n];
-    }
-};3
-                421.16	421.16
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
-class Solution {
-public:
-    vector<int> largestValues(TreeNode* root) {
-        vector<int> ans;
-        if (!root) {
-            return ans;
-        }
-        queue<TreeNode*> q{{root}};
-        while (q.size()) {
-            int x = INT_MIN;
-            for (int i = q.size(); i; --i) {
-                TreeNode* node = q.front();
-                q.pop();
-                x = max(x, node->val);
-                if (node->left) {
-                    q.push(node->left);
-                }
-                if (node->right) {
-                    q.push(node->right);
-                }
-            }
-            ans.push_back(x);
-        }
-        return ans;
-    }
-};
-public:
-    int minimumDiameterAfterMerge(vector<vector<int>>& edges1, vector<vector<int>>& edges2) {
-        int d1 = treeDiameter(edges1);
-        int d2 = treeDiameter(edges2);
-        return max({d1, d2, (d1 + 1) / 2 + (d2 + 1) / 2 + 1});
-    }
-
-    int treeDiameter(vector<vector<int>>& edges) {
-        int n = edges.size() + 1;
-        vector<int> g[n];
-        for (auto& e : edges) {
-            int a = e[0], b = e[1];
-            g[a].push_back(b);
-            g[b].push_back(a);
-        }
-        int ans = 0, a = 0;
-        auto dfs = [&](this auto&& dfs, int i, int fa, int t) -> void {
-            for (int j : g[i]) {
-                if (j != fa) {
-                    dfs(j, i, t + 1);
-                }
-            }
-            if (ans < t) {
-                ans = t;
-                a = i;
-            }
-        };
-        dfs(0, -1, 0);
-        dfs(a, -1, 0);
-        return ans;
-    }
-};
-        }class Solution {
-public:
-            class BinaryIndexedTree {
-private:/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
-class Solution {
-public:
-    int minimumOperations(TreeNode* root) {
-        queue<TreeNode*> q{{root}};
-        int ans = 0;
-        auto f = [](vector<int>& t) {
-            int n = t.size();
-            vector<int> alls(t.begin(), t.end());
-            sort(alls.begin(), alls.end());
-            unordered_map<int, int> m;
-            int ans = 0;
-            for (int i = 0; i < n; ++i) m[alls[i]] = i;
-            for (int i = 0; i < n; ++i) t[i] = m[t[i]];
-            for (int i = 0; i < n; ++i) {
-                while (t[i] != i) {
-                    swap(t[i], t[t[i]]);
-                    ++ans;
-                }
-            }
-            return ans;
-        };
-        while (!q.empty()) {
-            vector<int> t;
-            for (int n = q.size(); n; --n) {
-                auto node = q.front();
-                q.pop();
-                t.emplace_back(node->val);
-                if (node->left) q.push(node->left);
-                if (node->right) q.push(node->right);
-            }
-            ans += f(t);
-        }
-        return ans;
-    }
-};
-    int inf = 1 << 30;
-    int n;
-    vector<int> c;
-
-public:
-    BinaryIndexedTree(int n) {
-        this->n = n;
-        c.resize(n + 1, inf);
-    }
-
-    void update(int x, int v) {
-        while (x <= n) {
-            c[x] = min(c[x], v);
-            x += x & -x;
-        }
-    }
-
-    int query(int x) {
-        int mi = inf;
-        while (x > 0) {
-            mi = min(mi, c[x]);
-            x -= x & -x;
-        }
-        return mi == inf ? -1 : mi;
-    }
-};
-
-class Solution {
-public:
-    vector<int> leftmostBuildingQueries(vector<int>& heights, vector<vector<int>>& queries) {
-        int n = heights.size(), m = queries.size();
-        for (auto& q : queries) {
-            if (q[0] > q[1]) {
-                swap(q[0], q[1]);
-            }
-        }
-        vector<int> idx(m);
-        iota(idx.begin(), idx.end(), 0);
-        sort(idx.begin(), idx.end(), [&](int i, int j) {
-            return queries[j][1] < queries[i][1];
-        });
-        vector<int> s = heights;
-        sort(s.begin(), s.end());
-        s.erase(unique(s.begin(), s.end()), s.end());
-        vector<int> ans(m);
-        int j = n - 1;
-        BinaryIndexedTree tree(n);
-        for (int i : idx) {
-            int l = queries[i][0], r = queries[i][1];
-            while (j > r) {
-                int k = s.end() - lower_bound(s.begin(), s.end(), heights[j]) + 1;
-                tree.update(k, j);
-                --j;
-            }
-            if (l == r || heights[l] < heights[r]) {
-                ans[i] = r;
+    int numberOfAlternatingGroups(vector<int>& colors, int k) {
+        int n = colors.size();
+        int ans = 0, cnt = 0;
+        for (int i = 0; i < n << 1; ++i) {
+            if (i && colors[i % n] == colors[(i - 1) % n]) {
+                cnt = 1;
             } else {
-                int k = s.end() - lower_bound(s.begin(), s.end(), heights[l]);
-                ans[i] = tree.query(k);
+                ++cnt;
             }
+            ans += i >= n && cnt >= k ? 1 : 0;
         }
         return ans;
     }
 };
-    int maxKDivisibleComponents(int n, vector<vector<int>>& edges, vector<int>& values, int k) {
-        int ans = 0;
-        vector<int> g[n];
-        for (auto& e : edges) {
-            int a = e[0], b = e[1];
-            g[a].push_back(b);
-            g[b].push_back(a);
+    public int numOfSubarrays(int[] arr) {
+        final int mod = (int) 1e9 + 7;class Solution:
+    def mergeArrays(
+        self, nums1: List[List[int]], nums2: List[List[int]]class Solution:class Solution:class Solution {
+public:
+    int minimumRecolors(string blocks, int k) {
+        int cnt = count(blocks.begin(), blocks.begin() + k, 'W');
+        int ans = cnt;
+        for (int i = k; i < blocks.size(); ++i) {
+            cnt += blocks[i] == 'W';
+            cnt -= blocks[i - k] == 'W';
+            ans = min(ans, cnt);
         }
-        function<long long(int, int)> dfs = [&](int i, int fa) {
-            long long s = values[i];
-            for (int j : g[i]) {
-                if (j != fa) {
-                    s += dfs(j, i);
-                }
-            }
-            ans += s % k == 0;
-            return s;
-        };
-        dfs(0, -1);
         return ans;
     }
 };
+    def checkPowersOfThree(self, n: int) -> bool:
+        while n:
+            if n % 3 > 1:
+                return False
+            n //= 3
+        return True
+    def pivotArray(self, nums: List[int], pivot: int) -> List[int]:
+        a, b, c = [], [], []
+        for x in nums:
+            if x < pivot:
+                a.append(x)
+            elif x == pivot:
+                b.append(x)
+            else:
+                c.append(x)
+        return a + b + c
+    ) -> List[List[int]]:
+        cnt = Counter()
+        for i, v in nums1 + nums2:
+            cnt[i] += v
+        return sorted(cnt.items())
+        int[] cnt = {1, 0};class Solution:
+    def shortestCommonSupersequence(self, str1: str, str2: str) -> str:
+        m, n = len(str1), len(str2)
+        f = [[0] * (n + 1) for _ in range(m + 1)]
+        for i in range(1, m + 1):class Solution:
+    def applyOperations(self, nums: List[int]) -> List[int]:
+        n = len(nums)
+        for i in range(n - 1):
+            if nums[i] == nums[i + 1]:
+                nums[i] <<= 1
+                nums[i + 1] = 0
+        ans = [0] * n
+        i = 0
+        for x in nums:
+            if x:
+                ans[i] = x
+                i += 1
+        return ans
+            for j in range(1, n + 1):
+                if str1[i - 1] == str2[j - 1]:
+                    f[i][j] = f[i - 1][j - 1] + 1
+                else:
+                    f[i][j] = max(f[i - 1][j], f[i][j - 1])
+        ans = []
+        i, j = m, n
+        while i or j:
+            if i == 0:
+                j -= 1
+                ans.append(str2[j])
+            elif j == 0:
+                i -= 1
+                ans.append(str1[i])
+            else:
+                if f[i][j] == f[i - 1][j]:
+                    i -= 1
+                    ans.append(str1[i])
+                elif f[i][j] == f[i][j - 1]:
+                    j -= 1
+                    ans.append(str2[j])
+                else:
+                    i, j = i - 1, j - 1
+                    ans.append(str1[i])
+        return ''.join(ans[::-1])
         int ans = 0, s = 0;
-        for (int x : d) {
+        for (int x : arr) {
             s += x;
-            ans = max(ans, s);
-        }
-        }class Solution {
-public:
-    int maxChunksToSorted(vector<int>& arr) {
-        int ans = 0, mx = 0;
-        for (int i = 0; i < arr.size(); ++i) {
-            mx = max(mx, arr[i]);
-            ans += i == mx;
-        }
-        return ans;
-    }.l
-        
-};
-        class Solution {
-public:
-    vector<int> finalPrices(vector<int>& prices) {
-        stack<int> stk;
-        for (int i = prices.size() - 1; ~i; --i) {
-            int x = prices[i];
-            while (!stk.empty() && stk.top() > x) {
-                stk.pop();
-            }
-            if (!stk.empty()) {
-                prices[i] -= stk.top();
-            }
-            stk.push(x);
-        }
-        return prices;
-    }
-};
-        class Solution {
-public:
-    vector<int> getFinalState(vector<int>& nums, int k, int multiplier) {
-        auto cmp = [&nums](int i, int j) {
-            return nums[i] == nums[j] ? i > j : nums[i] > nums[j];
-        };
-        priority_queue<int, vector<int>, decltype(cmp)> pq(cmp);
-
-        for (int i = 0; i < nums.size(); ++i) {
-            pq.push(i);
-        }
-
-        while (k--) {
-            int i = pq.top();
-            pq.pop();
-            nums[i] *= multiplier;
-            pq.push(i);
-        }
-
-        return nums;
-    }
-};return ans;
-    }
-    class Solution {
-public:
-    double maxAverageRatio(vector<vector<int>>& classes, int extraStudents) {
-        priority_queue<tuple<double, int, int>> pq;
-        for (auto& e : classes) {
-            int a = e[0], b = e[1];
-            double x = (double) (a + 1) / (b + 1) - (double) a / b;
-            pq.push({x, a, b});
-        }
-        while (extraStudents--) {
-            auto [_, a, b] = pq.top();
-            pq.pop();
-            a++;
-            b++;
-            double x = (double) (a + 1) / (b + 1) - (double) a / b;
-            pq.push({x, a, b});
-        }
-        double ans = 0;
-        while (pq.size()) {
-            auto [_, a, b] = pq.top();
-            pq.pop();
-            ans += (double) a / b;
-        }
-        return ans / classes.size();
-    }
-};
-    class Solution {
-public:
-    long long continuousSubarrays(vector<int>& nums) {
-        long long ans = 0;
-        int i = 0, n = nums.size();
-        multiset<int> s;
-        for (int j = 0; j < n; ++j) {
-            s.insert(nums[j]);
-            while (*s.rbegin() - *s.begin() > 2) {
-                s.erase(s.find(nums[i++]));
-            }
-            ans += j - i + 1;
-        }
+            ans = (ans + cnt[s & 1 ^ 1]) % mod;
+            ++cnt[s & 1];
+        }class Solution:
+    def maxAbsoluteSum(self, nums: List[int]) -> int:
+        f = g = 0
+        ans = 0
+        for x in nums:
+            f = max(f, 0) + x
+            g = min(g, 0) + x
+            ans = max(ans, f, abs(g))
+        return ans
         return ans;
     }
-};
-};
+}
+        int ans = -1;
+        for (int v : nums) {
+            int x = 0;class Solution {/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
 class Solution {
 public:
-    long long findScore(vector<int>& nums) {
-        int n = nums.size();
-        vector<bool> vis(n);
-        using pii = pair<int, int>;
-        priority_queue<pii, vector<pii>, greater<pii>> q;
+    TreeNode* constructFromPrePost(vector<int>& preorder, vector<int>& postorder) {
+        unordered_map<int, int> pos;
+        int n = postorder.size();
         for (int i = 0; i < n; ++i) {
-            q.emplace(nums[i], i);
+            pos[postorder[i]] = i;
         }
-        long long ans = 0;
-        while (!q.empty()) {
-            auto [x, i] = q.top();
-            q.pop();
-            ans += x;
-            vis[i] = true;
-            if (i + 1 < n) {
-                vis[i + 1] = true;
+        function<TreeNode*(int, int, int, int)> dfs = [&](int a, int b, int c, int d) -> TreeNode* {
+            if (a > b) {
+                return nullptr;
             }
-            if (i - 1 >= 0) {
-                vis[i - 1] = true;
+            TreeNode* root = new TreeNode(preorder[a]);
+            if (a == b) {
+                return root;
             }
-            while (!q.empty() && vis[q.top().second]) {
-                q.pop();
+            int i = pos[preorder[a + 1]];
+            int m = i - c + 1;
+            root->left = dfs(a + 1, a + m, c, i);
+            root->right = dfs(a + m + 1, b, i + 1, d - 1);
+            return root;
+        };
+        return dfs(0, n - 1, 0, n - 1);
+    }
+};
+    public String findDifferentBinaryString(String[] nums) {
+        int mask = 0;
+        for (var x : nums) {/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    TreeNode* recoverFromPreorder(string S) {
+        stack<TreeNode*> st;
+        int depth = 0;
+        int num = 0;
+        for (int i = 0; i < S.length(); ++i) {
+            if (S[i] == '-') {
+                depth++;
+            } else {
+                num = 10 * num + S[i] - '0';
             }
+            if (i + 1 >= S.length() || (isdigit(S[i]) && S[i + 1] == '-')) {
+                TreeNode* newNode = new TreeNode(num);
+                while (st.size() > depth) {
+                    st.pop();
+                }
+                if (!st.empty()) {
+                    if (st.top()->left == nullptr) {
+                        st.top()->left = newNode;
+                    } else {
+                        st.top()->right = newNode;
+                    }
+                }
+                st.push(newNode);
+                depth = 0;
+                num = 0;
+            }
+        }
+        TreeNode* res;
+        while (!st.empty()) {
+            res = st.top();
+            st.pop();
+        }
+        return res;
+    }
+};
+            int cnt = 0;
+            for (int i = 0; i < x.length(); ++i) {
+                if (x.charAt(i) == '1') {
+                    ++cnt;
+                }
+            }
+            mask |= 1 << cnt;
+        }
+        for (int i = 0;; ++i) {
+            if ((mask >> i & 1) == 0) {
+                return "1".repeat(i) + "0".repeat(nums.length - i);
+            }
+        }
+    }
+}
+            for (int y = v; y > 0; y /= 10) {
+                x += y % 10;
+            }class Solution {
+    private boolean[] vis = new boolean[10];
+    private StringBuilder t = new StringBuilder();
+    private String p;
+    private String ans;
+
+    public String smallestNumber(String pattern) {
+        p = pattern;
+        dfs(0);
+        return ans;
+    }
+
+    private void dfs(int u) {
+        if (ans != null) {
+            return;
+        }
+        if (u == p.length() + 1) {
+            ans = t.toString();
+            return;
+        }
+        for (int i = 1; i < 10; ++i) {
+            if (!vis[i]) {
+                if (u > 0 && p.charAt(u - 1) == 'I' && t.charAt(u - 1) - '0' >= i) {
+                    continue;
+                }
+                if (u > 0 && p.charAt(u - 1) == 'D' && t.charAt(u - 1) - '0' <= i) {
+                    continue;
+                }
+                vis[i] = true;
+                t.append(i);
+                dfs(u + 1);
+                t.deleteCharAt(t.length() - 1);
+                vis[i] = false;
+            }
+        }
+    }
+}
+            if (d[x] > 0) {
+                ans = Math.max(ans, d[x] + v);
+            }
+            d[x] = Math.max(d[x], v);
+        }
+        return ans;
+    }
+}
+
+    public NumberContainers() {
+    }
+class Solution {
+    public long countBadPairs(int[] nums) {
+        Map<Integer, Integer> cnt = new HashMap<>();
+        long ans = 0;
+        for (int i = 0; i < nums.length; ++i) {
+            int x = i - nums[i];
+            ans += i - cnt.getOrDefault(x, 0);
+            cnt.merge(x, 1, Integer::sum);
+        }
+        return ans;
+    }
+}
+    public void change(int index, int number) {
+        if (d.containsKey(index)) {
+            int oldNumber = d.get(index);
+            g.get(oldNumber).remove(index);
+        }
+        d.put(index, number);
+        g.computeIfAbsent(number, k -> new TreeSet<>()).add(index);
+    }
+
+    public int find(int number) {
+        var ids = g.get(number);
+        return ids == null || ids.isEmpty() ? -1 : ids.first();
+    }
+}
+
+/**
+ * Your NumberContainers object will be instantiated and called as such:
+ * NumberContainers obj = new NumberContainers();
+ * obj.change(index,number);
+ * int param_2 = obj.find(number);
+ */class Solution {
+public:
+
         }
         return ans;
     }

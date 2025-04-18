@@ -12,7 +12,24 @@ public:
         int ans = 0;
         for (int j = 1; j < nums.size(); ++j) {
             for (int i = 0; i < j; ++i) {
-                ans += nums[i] == nums[j] && (i * j % k) == 0;
+                ans += nums[i] == nums[j] && (i * j % k) == 0;class Solution {
+public:
+    string countAndSay(int n) {
+        string s = "1";
+        while (--n) {
+            string t = "";
+            for (int i = 0; i < s.size();) {
+                int j = i;
+                while (j < s.size() && s[j] == s[i]) ++j;
+                t += to_string(j - i);
+                t += s[i];
+                i = j;
+            }
+            s = t;
+        }
+        return s;
+    }
+};
             }
         }
         return ans;

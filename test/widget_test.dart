@@ -7,7 +7,21 @@ public:
     bool canPartition(vector<int>& nums) {
         int s = accumulate(nums.begin(), nums.end(), 0);
         if (s % 2 == 1) {class Solution {class Solution {class BinaryIndexedTree {class Solution {
+public:class Solution {
 public:
+    int numRabbits(vector<int>& answers) {
+        unordered_map<int, int> cnt;
+        for (int x : answers) {
+            ++cnt[x];
+        }
+        int ans = 0;
+        for (auto& [x, v] : cnt) {
+            int group = x + 1;
+            ans += (v + group - 1) / group * group;
+        }
+        return ans;
+    }
+};
     int countPairs(vector<int>& nums, int k) {
         int ans = 0;
         for (int j = 1; j < nums.size(); ++j) {

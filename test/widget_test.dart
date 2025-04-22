@@ -4,7 +4,7 @@ class NumberContainers {
     public int maximumSum(int[] nums) {
         int[] d = new int[100];class Solution {class Solution:class Solution {
 public:
-    bool canPartition(vector<int>& nums) {
+    bool canPartition(vector<int>& nums) {v
         int s = accumulate(nums.begin(), nums.end(), 0);
         if (s % 2 == 1) {class Solution {class Solution {class BinaryIndexedTree {class Solution {
 public:class Solution {class Solution {

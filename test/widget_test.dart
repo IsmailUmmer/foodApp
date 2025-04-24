@@ -1,20 +1,4 @@
-class NumberContainers {
-    private Map<Integer, Integer> d = new HashMap<>();
-    private Map<Integer, TreeSet<Integer>> g = new HashMap<>();class Solution {
-    public int maximumSum(int[] nums) {
-        int[] d = new int[100];class Solution {class Solution:class Solution {
-public:
-    bool canPartition(vector<int>& nums) {vclass Solution {
-public:
-    int countLargestGroup(int n) {
-        int cnt[40]{};
-        int ans = 0, mx = 0;
-        for (int i = 1; i <= n; ++i) {
-            int s = 0;
-            for (int x = i; x; x /= 10) {
-                s += x % 10;
-            }
-            ++cnt[s];
+
             if (mx < cnt[s]) {
                 mx = cnt[s];
                 ans = 1;

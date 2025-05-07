@@ -207,7 +207,19 @@ public:
             last[s[i] - 'a'] = i;
         }
         vector<int> ans;
-        int mx = 0, j = 0;
+        int mx = 0, j = 0;class Solution {
+public:
+    long long maximumTripletValue(vector<int>& nums) {
+        long long ans = 0, mxDiff = 0;
+        int mx = 0;
+        for (int x : nums) {
+            ans = max(ans, mxDiff * x);
+            mxDiff = max(mxDiff, 1LL * mx - x);
+            mx = max(mx, x);
+        }
+        return ans;
+    }
+};
         for (int i = 0; i < n; ++i) {
             mx = max(mx, last[s[i] - 'a']);
             if (mx == i) {

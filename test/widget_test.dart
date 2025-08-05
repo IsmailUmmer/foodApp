@@ -848,3 +848,4 @@ public:
         return accumulate(gifts.begin(), gifts.end(), 0LL);
     }
 };
+

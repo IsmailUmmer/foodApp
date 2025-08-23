@@ -3,13 +3,140 @@ class NumberContainers {
     private Map<Integer, TreeSet<Integer>> g = new HashMap<>();class Solution {
     public int maximumSum(int[] nums) {
         int[] d = new int[100];class Solution {class Solution:
-    def coloredCells(self, n: int) -> int:class Solution {
-public:147.88	147.88class UnionFind {
+    def coloredCells(self, n: int) -> int:class Solution {class Solution {class Solution {
+public:
+    vector<int> partitionLabels(string s) {
+        int last[26] = {0};
+        int n = s.size();
+        for (int i = 0; i < n; ++i) {
+            last[s[i] - 'a'] = i;
+        }
+        vector<int> ans;
+        int mx = 0, j = 0;class Solution {
+public:
+    long long maximumTripletValue(vector<int>& nums) {
+        long long ans = 0, mxDiff = 0;
+        int mx = 0;
+        for (int x : nums) {
+            ans = max(ans, mxDiff * x);
+            mxDiff = max(mxDiff, 1LL * mx - x);
+            mx = max(mx, x);
+        }
+        return ans;
+    }
+};
+        for (int i = 0; i < n; ++i) {
+            mx = max(mx, last[s[i] - 'a']);
+            if (mx == i) {
+                ans.push_back(i - j + 1);
+                j = i + 1;
+            }
+        }
+        return ans;
+    }
+};
+public:
+    const int dirs[5] = {-1, 0, 1, 0, -1};
+
+    vector<int> maxPoints(vector<vector<int>>& grid, vector<int>& queries) {
+        int k = queries.size();
+        vector<pair<int, int>> qs(k);
+        for (int i = 0; i < k; ++i) qs[i] = {queries[i], i};
+        sort(qs.begin(), qs.end());
+        vector<int> ans(k);
+        int m = grid.size(), n = grid[0].size();
+        bool vis[m][n];
+        memset(vis, 0, sizeof vis);
+        vis[0][0] = true;
+        priority_queue<tuple<int, int, int>, vector<tuple<int, int, int>>, greater<tuple<int, int, int>>> q;
+        q.push({grid[0][0], 0, 0});
+        int cnt = 0;
+        for (auto& e : qs) {
+            int v = e.first;
+            k = e.second;
+            while (!q.empty() && get<0>(q.top()) < v) {
+                auto [_, i, j] = q.top();
+                q.pop();
+                ++cnt;
+                for (int h = 0; h < 4; ++h) {
+                    int x = i + dirs[h], y = j + dirs[h + 1];
+                    if (x >= 0 && x < m && y >= 0 && y < n && !vis[x][y]) {
+                        vis[x][y] = true;
+                        q.push({grid[x][y], x, y});
+                    }
+                }
+            }
+            ans[k] = cnt;
+        }
+        return ans;
+    }
+};
+public:147.88	147.88class UnionFind {class Solution {
+public:
+    int minimumIndex(vector<int>& nums) {
+        int x = 0, cnt = 0;
+        unordered_map<int, int> freq;
+        for (int v : nums) {
+            ++freq[v];
+            if (freq[v] > cnt) {
+                cnt = freq[v];
+                x = v;
+            }
+        }
+        int cur = 0;
+        for (int i = 1; i <= nums.size(); ++i) {
+            if (nums[i - 1] == x) {
+                ++cur;
+                if (cur * 2 > i && (cnt - cur) * 2 > nums.size() - i) {
+                    return i - 1;
+                }
+            }
+        }
+        return -1;
+    }
+};
 public:
     UnionFind(int n) {
-        p = vector<int>(n);class Solution {
+        p = vector<int>(n);class Solution {class Solution {
 public:
-    int countPaths(int n, vector<vector<int>>& roads) {
+    int minOperations(vector<vector<int>>& grid, int x) {
+        int m = grid.size(), n = grid[0].size();
+        int mod = grid[0][0] % x;
+        int nums[m * n];
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                if (grid[i][j] % x != mod) {
+                    return -1;
+                }
+                nums[i * n + j] = grid[i][j];
+            }
+        }
+        sort(nums, nums + m * n);
+        int mid = nums[(m * n) >> 1];
+        int ans = 0;
+        for (int v : nums) {
+            ans += abs(v - mid) / x;
+        }
+        return ans;
+    }
+};
+public:
+    int countPaths(int n, vector<vector<int>>& roads) {class Solution {
+public:
+    int countDays(int days, vector<vector<int>>& meetings) {
+        sort(meetings.begin(), meetings.end());
+        int ans = 0, last = 0;
+        for (auto& e : meetings) {
+            int st = e[0], ed = e[1];
+            if (last < st) {
+                ans += st - last - 1;
+            }
+            last = max(last, ed);
+        }
+        ans += days - last;
+        return ans;
+    }
+};
         const long long inf = LLONG_MAX / 2;
         const int mod = 1e9 + 7;
 

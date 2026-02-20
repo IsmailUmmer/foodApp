@@ -1,14 +1,209 @@
-class NumberContainers {
-    private Map<Integer, Integer> d = new HashMap<>();
-    private Map<Integer, TreeSet<Integer>> g = new HashMap<>();class Solution {
-    public int maximumSum(int[] nums) {
-        int[] d = new int[100];class Solution {class Solution:
-    def coloredCells(self, n: int) -> int:class Solution {class Solution {class Solution {
+class Solution {
 public:
+    int countCompleteSubarrays(vector<int>& nums) {
+        unordered_set<int> s(nums.begin(), nums.end());
+        int cnt = s.size();
+        int ans = 0, n = nums.size();
+        for (int i = 0; i < n; ++i) {
+            s.clear();
+            for (int j = i; j < n; ++j) {
+                s.insert(nums[j]);
+                if (s.size() == cnt) {
+                    ++ans;
+                }
+            }
+        }
+        return ans;
+    }
+};
+            if (mx < cnt[s]) {
+                mx = cnt[s];
+                ans = 1;
+            } else if (mx == cnt[s]) {
+                ++ans;
+            }
+        }
+        return ans;
+    }
+};
+        int s = accumulate(nums.begin(), nums.end(), 0);
+        if (s % 2 == 1) {class Solution {class Solution {class BinaryIndexedTree {class Solution {
+public:class Solution {class Solution {
+public:
+    int numberOfArrays(vector<int>& differences, int lower, int upper) {
+        long long x = 0, mi = 0, mx = 0;
+        for (int d : differences) {
+            x += d;
+            mi = min(mi, x);
+            mx = max(mx, x);
+        }
+        return max(upper - lower - (mx - mi) + 1, 0LL);
+    }
+};
+public:
+    int numRabbits(vector<int>& answers) {
+        unordered_map<int, int> cnt;
+        for (int x : answers) {
+            ++cnt[x];
+        }
+        int ans = 0;
+        for (auto& [x, v] : cnt) {
+            int group = x + 1;
+            ans += (v + group - 1) / group * group;
+        }
+        return ans;
+    }
+};
+    int countPairs(vector<int>& nums, int k) {
+        int ans = 0;
+        for (int j = 1; j < nums.size(); ++j) {
+            for (int i = 0; i < j; ++i) {
+                ans += nums[i] == nums[j] && (i * j % k) == 0;class Solution {
+public:
+    string countAndSay(int n) {
+        string s = "1";
+        while (--n) {
+            string t = "";
+            for (int i = 0; i < s.size();) {
+                int j = i;
+                while (j < s.size() && s[j] == s[i]) ++j;
+                t += to_string(j - i);
+                t += s[i];
+                i = j;
+            }
+            s = t;
+        }
+        return s;
+    }
+};
+            }
+        }
+        return ans;
+    }
+};
+public:
+    int n;
+    vector<int> c;
+
+    BinaryIndexedTree(int _n)
+        : n(_n)
+        , c(_n + 1) {}
+
+    void update(int x, int delta) {
+        while (x <= n) {
+            c[x] += delta;
+            x += lowbit(x);
+        }
+    }
+
+    int query(int x) {
+        int s = 0;
+        while (x > 0) {
+            s += c[x];
+            x -= lowbit(x);
+        }
+        return s;
+    }
+
+    int lowbit(int x) {
+        return x & -x;
+    }
+};
+
+class Solution {
+public:
+    long long goodTriplets(vector<int>& nums1, vector<int>& nums2) {
+        int n = nums1.size();
+        vector<int> pos(n);
+        for (int i = 0; i < n; ++i) pos[nums2[i]] = i + 1;
+        BinaryIndexedTree* tree = new BinaryIndexedTree(n);
+        long long ans = 0;
+        for (int& num : nums1) {
+            int p = pos[num];
+            int left = tree->query(p);
+            int right = n - p - (tree->query(n) - tree->query(p));
+            ans += 1ll * left * right;
+            tree->update(p, 1);
+        }
+        return ans;
+    }
+};
+public:
+    int countGoodTriplets(vector<int>& arr, int a, int b, int c) {
+        int n = arr.size();
+        int ans = 0;
+        for (int i = 0; i < n; ++i) {
+            for (int j = i + 1; j < n; ++j) {
+                for (int k = j + 1; k < n; ++k) {
+                    ans += abs(arr[i] - arr[j]) <= a && abs(arr[j] - arr[k]) <= b && abs(arr[i] - arr[k]) <= c;
+                }
+            }
+        }
+        return ans;
+    }
+};
+public:
+    int minimumOperations(vector<int>& nums) {
+        unordered_set<int> s;
+        for (int i = nums.size() - 1; ~i; --i) {
+            if (s.contains(nums[i])) {
+                return i / 3 + 1;
+            }
+            s.insert(nums[i]);
+        }
+        return 0;
+    }
+};
+            return false;
+        }
+        int n = nums.size();
+        int m = s >> 1;
+        bool f[n + 1][m + 1];
+        memset(f, false, sizeof(f));
+        f[0][0] = true;
+        for (int i = 1; i <= n; ++i) {
+            int x = nums[i - 1];
+            for (int j = 0; j <= m; ++j) {
+                f[i][j] = f[i - 1][j] || (j >= x && f[i - 1][j - x]);
+            }
+        }
+        return f[n][m];
+    }
+};
+    def coloredCells(self, n: int) -> int:class Solution {class Solution {class Solution {
+public:class Solution {
+public:
+    int subsetXORSum(vector<int>& nums) {
+        int n = nums.size();
+        int ans = 0;
+        for (int i = 0; i < 1 << n; ++i) {
+            int s = 0;
+            for (int j = 0; j < n; ++j) {
+                if (i >> j & 1) {
+                    s ^= nums[j];
+                }
+            }
+            ans += s;
+        }
+        return ans;
+    }
+};
     vector<int> partitionLabels(string s) {
         int last[26] = {0};
         int n = s.size();
-        for (int i = 0; i < n; ++i) {
+        for (int i = 0; i < n; ++i) {class Solution {
+public:
+    long long maximumTripletValue(vector<int>& nums) {
+        long long ans = 0, mxDiff = 0;
+        int mx = 0;
+        for (int x : nums) {
+            ans = max(ans, mxDiff * x);
+            mxDiff = max(mxDiff, 1LL * mx - x);
+            mx = max(mx, x);
+        }
+        return ans;
+    }
+};
             last[s[i] - 'a'] = i;
         }
         vector<int> ans;
@@ -38,7 +233,37 @@ public:
 public:
     const int dirs[5] = {-1, 0, 1, 0, -1};
 
-    vector<int> maxPoints(vector<vector<int>>& grid, vector<int>& queries) {
+    vector<int> maxPoints(vector<vector<int>>& grid, vector/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    TreeNode* lcaDeepestLeaves(TreeNode* root) {
+        auto dfs = [&](this auto&& dfs, TreeNode* root) -> pair<TreeNode*, int> {
+            if (!root) {
+                return {nullptr, 0};
+            }
+            auto [l, d1] = dfs(root->left);
+            auto [r, d2] = dfs(root->right);
+            if (d1 > d2) {
+                return {l, d1 + 1};
+            }
+            if (d1 < d2) {
+                return {r, d2 + 1};
+            }
+            return {root, d1 + 1};
+        };
+        return dfs(root).first;
+    }
+};<int>& queries) {
         int k = queries.size();
         vector<pair<int, int>> qs(k);
         for (int i = 0; i < k; ++i) qs[i] = {queries[i], i};
@@ -623,3 +848,43 @@ public:
         return accumulate(gifts.begin(), gifts.end(), 0LL);
     }
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

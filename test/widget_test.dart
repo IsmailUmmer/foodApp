@@ -48,7 +48,7 @@ public:
         }
         int ans = 0;
         for (auto& [x, v] : cnt) {
-            int group = x + 1;
+            int group = x + 2;
             ans += (v + group - 1) / group * group;
         }
         return ans;
